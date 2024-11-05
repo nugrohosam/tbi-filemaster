@@ -5,8 +5,10 @@ import { ArrowLeft, InfoCircle, TickCircle } from 'iconsax-react';
 import { Button } from '@/components/ui/button';
 import FileUtama from './FileUtama';
 import FilePendukung from './FilePendukung';
+import File from '../../../../assets/file.png'
+import InformasiProyek from './InformasiProyek';
 
-const TableData = () => {
+const TableData = ({uploadedFile, uploadedFileF2, uploadedFileF3, uploadedFileF4,}) => {
     const [activeTab, setActiveTab] = useState("Direktori");
 
 
@@ -23,10 +25,7 @@ const TableData = () => {
                         <p className='text-[14px] font-medium text-[#717179]'>Persiapan Bangun</p>
                     </div>
                     <div className=' grid items-center '>
-                        <Button variant="secondary" className=' flex items-center  p-[12px] rounded-[6px] gap-[8px]'>
-                            <InfoCircle size="14" />
-                            <p className='text-[14px] font-medium'>Informasi Proyek</p>
-                        </Button>
+                      <InformasiProyek/>
                     </div>
                 </div>
                 <div className='border p-[16px] rounded-[8px] grid gap-[16px]'>
@@ -40,41 +39,49 @@ const TableData = () => {
                     <div className="container mx-auto">
                         <div className="flex flex-wrap -m-4">
                             <div className="w-full md:w-1/2 lg:w-1/4 p-4">
-                                <div className="pb-1 text-[12px] text-[#0036AA] font-semibold grid gap-2">
-                                    <div className="bg-[#0036AA] h-[5px] w-full rounded-full" />
-                                    <div className="flex gap-2 items-center">
+                                <div className="pb-1 text-[12px]  font-semibold grid gap-2">
+                                    <div  className={`h-[5px] w-full rounded-full ${uploadedFile? "bg-[#0036AA]" : "bg-[#CBD5E1]"}`} />
+                                    <div className={`flex gap-2 items-center ${uploadedFile? "text-[#0036AA]" : "text-[#717179]"}`}>
                                         F1 - Form Pendaftaran
+                                        {uploadedFile && (
                                         <TickCircle variant="Bold" size="16" />
+                                        )}
                                     </div>
                                 </div>
                             </div>
 
                             <div className="w-full md:w-1/2 lg:w-1/4 p-4">
-                                <div className="pb-1 text-[12px] text-[#717179] font-semibold grid gap-2">
-                                    <div className="bg-[#CBD5E1] h-[5px] w-full rounded-full" />
-                                    <div className="flex gap-2 items-center">
+                                <div className="pb-1 text-[12px]  font-semibold grid gap-2">
+                                <div  className={`h-[5px] w-full rounded-full ${uploadedFileF2? "bg-[#0036AA]" : "bg-[#CBD5E1]"}`} />
+                                <div className={`flex gap-2 items-center ${uploadedFileF2? "text-[#0036AA]" : "text-[#717179]"}`}>
                                         F2 - Informasi Pekerjaan
+                                        {uploadedFileF2 && (
                                         <TickCircle variant="Bold" size="16" />
+                                        )}
                                     </div>
                                 </div>
                             </div>
 
                             <div className="w-full md:w-1/2 lg:w-1/4 p-4">
-                                <div className="pb-1 text-[12px] text-[#717179] font-semibold grid gap-2">
-                                    <div className="bg-[#CBD5E1] h-[5px] w-full rounded-full" />
-                                    <div className="flex gap-2 items-center">
+                                <div className="pb-1 text-[12px]  font-semibold grid gap-2">
+                                <div  className={`h-[5px] w-full rounded-full ${uploadedFileF3? "bg-[#0036AA]" : "bg-[#CBD5E1]"}`} />
+                                <div className={`flex gap-2 items-center ${uploadedFileF3? "text-[#0036AA]" : "text-[#717179]"}`}>
                                         F3 - Data Pengujian
+                                        {uploadedFileF3 && (
                                         <TickCircle variant="Bold" size="16" />
+                                        )}
                                     </div>
                                 </div>
                             </div>
 
                             <div className="w-full md:w-1/2 lg:w-1/4 p-4">
-                                <div className="pb-1 text-[12px] text-[#717179] font-semibold grid gap-2">
-                                    <div className="bg-[#CBD5E1] h-[5px] w-full rounded-full" />
-                                    <div className="flex gap-2 items-center">
+                                <div className="pb-1 text-[12px]  font-semibold grid gap-2">
+                                <div  className={`h-[5px] w-full rounded-full ${uploadedFileF4? "bg-[#0036AA]" : "bg-[#CBD5E1]"}`} />
+                                <div className={`flex gap-2 items-center ${uploadedFileF4? "text-[#0036AA]" : "text-[#717179]"}`}>
                                         F4 - Data Pekerjaan Teknis
+                                        {uploadedFileF4 && (
                                         <TickCircle variant="Bold" size="16" />
+                                        )}
                                     </div>
                                 </div>
                             </div>
@@ -119,9 +126,11 @@ const TableData = () => {
                            <FileUtama/>
                         )}
                         {activeTab === " Log" && (
-                            <p className="text-sm text-gray-500 dark:text-gray-400">
-                                This is the Log Aktivitas tab content.
-                            </p>
+                           <div className='flex flex-col justify-center items-center py-[24px] text-center'>
+                           <img src={File} alt="file" className='w-[40px] h-[40px]' />
+                           <h3 className='text-[16px] font-semibold'>File tidak tersedia</h3>
+                           <p className='text-[14px] text-[#717179]'>Upload file yang diperlukan menampilkan file</p>
+                       </div>
                         )}
                     </div>
                 </div>
