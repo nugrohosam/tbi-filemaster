@@ -26,7 +26,7 @@ const items = [
     },
     {
         title: "Proyek",
-        url: "/panel/proyek/detail",
+        url: "/panel/proyek",
         icon: FolderOpen,
     },
 ]

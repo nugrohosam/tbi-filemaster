@@ -15,7 +15,7 @@ const TableData = ({uploadedFile, uploadedFileF2, uploadedFileF3, uploadedFileF4
     return (
         <div>
             <div className='py-[16px] grid gap-[10px] px-[24px]'>
-                <Link className='text-[14px] font-medium flex gap-[8px] items-center'>
+                <Link to="/panel/proyek" className='text-[14px] font-medium flex gap-[8px] items-center'>
                     <ArrowLeft size="16" />
                     <p>Kembali</p>
                 </Link>

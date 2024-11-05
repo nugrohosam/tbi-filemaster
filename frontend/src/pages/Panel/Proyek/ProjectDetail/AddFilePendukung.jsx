@@ -17,7 +17,7 @@ const AddFilePendukung = () => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button className='bg-[#0036AA] gap-2 h-[36px] font-medium hover:bg-[#315197]'><Add size={20} /> <p className='text-[14px] font-medium'>Informasi Proyek</p></Button>
+        <Button className='bg-[#0036AA] gap-2 h-[36px] font-medium hover:bg-[#315197]'><Add size={20} /> <p className='text-[14px] font-medium'>Tambahkan File</p></Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>

@@ -19,7 +19,7 @@ const ProjectDetail = () => {
   const isFileUploadedF4 = uploadedFileF4gambar || uploadedFileF4analisa || uploadedFileF4spek || uploadedFileF4airhujan || uploadedFileF4airbersih || uploadedFileF4airkotor || uploadedFileF4SLF;
   return (
 
-    <ScrollArea className="h-[92vh] w-full ">
+    <ScrollArea className="h-[92vh] w-full bg-white">
       <div className=" py-3 px-6 mx-auto">
         <div className="flex flex-wrap -m-4">
           <div className="lg:w-[72%]  md:w-1/2  w-full">
