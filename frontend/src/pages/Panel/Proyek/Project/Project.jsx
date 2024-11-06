@@ -74,11 +74,11 @@ const Project = () => {
     const filteredData = Data.filter((item) => {
         const itemDate = parse(item.date, "dd MMMM yyyy", new Date(), { locale: localeID });
         return (
-          (selectedFormats.length === 0 || selectedFormats.includes(item.kategori)) &&
-          item.nama.toLowerCase().includes(searchTerm.toLowerCase()) &&
-          (!date || isSameDay(itemDate, date))
+            (selectedFormats.length === 0 || selectedFormats.includes(item.kategori)) &&
+            item.nama.toLowerCase().includes(searchTerm.toLowerCase()) &&
+            (!date || isSameDay(itemDate, date))
         );
-      });
+    });
 
 
     return (
@@ -86,13 +86,13 @@ const Project = () => {
             <div className=' h-full w-full  px-[24px]'>
                 <div className='flex justify-between py-[24px]'>
                     <h1 className='text-[24px] font-medium'>Daftar Proyek</h1>
-                    <AddProject/>
+                    <AddProject />
                 </div>
                 <div className='py-[12px]'>
-                    <div className='flex flex-wrap justify-between'>
-                        <div className='flex flex-wrap gap-[8px]'>
-                            <div className="relative w-[308px] h-[32px]">
-                                <SearchNormal1 className="absolute left-[16px] top-1/2 transform -translate-y-1/2 " size={16} />
+                    <div className='flex flex-wrap gap-4 justify-between items-center'>
+                        <div className='flex flex-wrap gap-[8px] w-full md:w-auto'>
+                            <div className="relative w-full md:w-[308px] h-[32px]">
+                                <SearchNormal1 className="absolute left-[16px] top-1/2 transform -translate-y-1/2" size={16} />
                                 <Input
                                     placeholder="Cari nama proyek"
                                     className="w-full h-full pl-[40px] text-[14px] font-medium bg-white"
@@ -102,8 +102,8 @@ const Project = () => {
                             </div>
                             <DropdownMenu>
                                 <DropdownMenuTrigger asChild>
-                                    <Button variant="outline" className=" h-[32px] text-[14px] border-slate-300">
-                                        <ChevronDown size={16} className="mr-2" />Semua proyek
+                                    <Button variant="outline" className="h-[32px] text-[14px] border-slate-300 w-full md:w-auto justify-start md:justify-center flex">
+                                        <ChevronDown size={16} className="mr-2" /> Semua proyek
                                     </Button>
                                 </DropdownMenuTrigger>
                                 <DropdownMenuContent align="start" className="w-[200px]">
@@ -117,7 +117,7 @@ const Project = () => {
                                             <span className="ml-[8px] text-[14px]">{role.name}</span>
                                         </DropdownMenuItem>
                                     ))}
-                                    <DropdownMenuItem className="h-[36px] font-medium  p-[12px] flex items-center justify-center text-[14px]" onClick={() => setSelectedFormats([])}>
+                                    <DropdownMenuItem className="h-[36px] font-medium p-[12px] flex items-center justify-center text-[14px]" onClick={() => setSelectedFormats([])}>
                                         Hapus Filter
                                     </DropdownMenuItem>
                                 </DropdownMenuContent>
@@ -128,11 +128,10 @@ const Project = () => {
                                 <Button
                                     variant="outline"
                                     className={cn(
-                                        "w-auto justify-start text-left font-normal h-[32px]",
+                                        "w-full md:w-auto justify-start text-left font-normal h-[32px]",
                                         !date && "text-muted-foreground"
                                     )}
                                 >
-
                                     {date ? format(date, "dd MMMM yyyy", { locale: localeID }) : <span className='text-[#717179]'>Pilih Tanggal</span>}
                                     <CalendarIcon size={18} color='#717179' />
                                 </Button>
