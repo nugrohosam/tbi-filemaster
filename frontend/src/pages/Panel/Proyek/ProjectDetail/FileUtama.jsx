@@ -86,7 +86,7 @@ const FileUtama = () => {
                 {DataFileUtama.length > 0 ? (
                     <div className="flex flex-wrap -m-4">
                         {filteredData.map((item) => (
-                            <div key={item.id} className="lg:w-1/6 md:w-1/2 p-4 w-full">
+                            <div key={item.id} className="lg:w-1/6 sm:w-1/2 md:w-1/3 p-4 w-1/2">
                                 <div className="grid justify-end">
                                     <DropdownMenu>
                                         <DropdownMenuTrigger asChild>
@@ -96,6 +96,12 @@ const FileUtama = () => {
                                             </Button>
                                         </DropdownMenuTrigger>
                                         <DropdownMenuContent align="start" className="w-[100px]">
+                                        <DropdownMenuItem className="p-3 gap-3 text-[14px] font-medium ">
+                                                View
+                                            </DropdownMenuItem>
+                                            <DropdownMenuItem className="p-3 gap-3 text-[14px] font-medium ">
+                                                Download
+                                            </DropdownMenuItem>
                                             <DropdownMenuItem className="p-3 gap-3 text-[14px] font-medium text-rose-500 focus:text-rose-500">
                                                 Delete
                                             </DropdownMenuItem>

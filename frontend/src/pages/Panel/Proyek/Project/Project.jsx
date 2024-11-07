@@ -162,8 +162,8 @@ const Project = () => {
                     <div className=" py-[12px] mx-auto w-full">
                         <div className="flex flex-wrap -m-4">
                             {filteredData.map((item) => (
-                                <div key={item.id} className="lg:w-[20%] md:w-1/2 p-4 w-full ">
-                                    <div onClick={() => navigate('/panel/proyek/detail')} className='bg-white p-[16px] rounded-[16px] grid gap-[23px] cursor-pointer'>
+                                <div key={item.id} className="lg:w-1/4 md:w-1/2 p-4 w-1/2 ">
+                                    <div onClick={() => navigate('/panel/proyek/detail')} className='bg-white p-[16px] h-full rounded-[16px] grid gap-[23px] cursor-pointer'>
                                         <div className='flex justify-between items-center'>
                                             <BsFolderFill color='#F0C74B' size={32} />
                                             <DropdownMenu>
@@ -181,10 +181,10 @@ const Project = () => {
                                             </DropdownMenu>
                                         </div>
                                         <div>
-                                            <h2 className='text-[14px] font-medium'>{item.nama}</h2>
-                                            <p className='text-[12px] font-medium text-[#717179]'>{item.kategori}</p>
+                                            <h2 className=' text-[14px]  font-medium'>{item.nama}</h2>
+                                            <p className=' text-[12px]  font-medium text-[#717179]'>{item.kategori}</p>
                                         </div>
-                                        <h3 className='text-[12px] font-medium text-[#717179]'>Deadline : {item.date}</h3>
+                                        <h3 className='text-[12px]  font-medium text-[#717179]'>Deadline : {item.date}</h3>
                                     </div>
                                 </div>
                             ))}

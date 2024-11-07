@@ -361,7 +361,7 @@ const Form = ({uploadedFile, setUploadedFile, uploadedFileF2, setUploadedFileF2,
 
     return (
         <div>
-            <Accordion type="multiple"  className="w-full">
+            <Accordion type="single" defaultValue="item-1 item-2 item-3 item-4" collapsible className="w-full">
                 <AccordionItem value="item-1">
                     <AccordionTrigger className='text-[14px] font-semibold p-[16px]'>F1 - Form Pendaftaran</AccordionTrigger>
                     <AccordionContent className='px-[16px] pb-[16px] grid gap-[8px]'>
