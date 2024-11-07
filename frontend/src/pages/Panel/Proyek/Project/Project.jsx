@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Input } from '@/components/ui/input'
-import { SearchNormal1, Calendar as CalendarIcon } from 'iconsax-react';
+import { SearchNormal1, Calendar as CalendarIcon, TickCircle } from 'iconsax-react';
 import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
 import {
@@ -43,21 +43,21 @@ const Project = () => {
         { id: "m5gr84it", name: 'Izin Usaha' },
     ];
     const Data = [
-        { id: 1, nama: 'PT Indomart - Gresik', kategori: 'Izin Bangun', date: '14 Oktober 2024' },
-        { id: 2, nama: 'PT Indomart - Surabaya', kategori: 'SLF', date: '15 Oktober 2024' },
-        { id: 3, nama: 'PT Indomart - Sidoarjo', kategori: 'Persiapan Bangun', date: '16 Oktober 2024' },
-        { id: 4, nama: 'PT Alfamart - Malang', kategori: 'Izin Usaha', date: '17 Oktober 2024' },
-        { id: 5, nama: 'PT Alfamidi - Kediri', kategori: 'SLF', date: '18 Oktober 2024' },
-        { id: 6, nama: 'PT Sampoerna - Surabaya', kategori: 'Izin Bangun', date: '19 Oktober 2024' },
-        { id: 7, nama: 'PT Gudang Garam - Kediri', kategori: 'SLF', date: '20 Oktober 2024' },
-        { id: 8, nama: 'PT Wings - Gresik', kategori: 'Persiapan Bangun', date: '21 Oktober 2024' },
-        { id: 9, nama: 'PT Indofood - Pasuruan', kategori: 'Izin Usaha', date: '22 Oktober 2024' },
-        { id: 10, nama: 'PT Danone - Sidoarjo', kategori: 'SLF', date: '23 Oktober 2024' },
-        { id: 11, nama: 'PT Unilever - Surabaya', kategori: 'Izin Bangun', date: '24 Oktober 2024' },
-        { id: 12, nama: 'PT Coca Cola - Malang', kategori: 'Persiapan Bangun', date: '25 Oktober 2024' },
-        { id: 13, nama: 'PT Mayora - Mojokerto', kategori: 'Izin Usaha', date: '26 Oktober 2024' },
-        { id: 14, nama: 'PT Nestle - Pasuruan', kategori: 'SLF', date: '27 Oktober 2024' },
-        { id: 15, nama: 'PT Garuda Food - Gresik', kategori: 'Persiapan Bangun', date: '28 Oktober 2024' },
+        { id: 1, nama: 'PT Indomart - Gresik', kategori: 'Izin Bangun', date: '14 Oktober 2024', perusahaan: 'PT Indomaret', Aktivitas: '15 Oktober 2024', Progres: 'F1, F2, F3, F4' },
+        { id: 2, nama: 'PT Alfamart - Surabaya', kategori: 'SLF', date: '20 Oktober 2024', perusahaan: 'PT Alfamart', Aktivitas: '21 Oktober 2024', Progres: 'F2, F3' },
+        { id: 3, nama: 'PT Sumber Makmur - Jakarta', kategori: 'Persiapan Bangun', date: '18 Oktober 2024', perusahaan: 'PT Sumber Makmur', Aktivitas: '19 Oktober 2024', Progres: 'F1, F3, F4' },
+        { id: 4, nama: 'PT Tokopedia - Depok', kategori: 'Izin Usaha', date: '10 Oktober 2024', perusahaan: 'PT Tokopedia', Aktivitas: '11 Oktober 2024', Progres: 'F1, F4' },
+        { id: 5, nama: 'PT Bukalapak - Bogor', kategori: 'Izin Bangun', date: '22 Oktober 2024', perusahaan: 'PT Bukalapak', Aktivitas: '23 Oktober 2024', Progres: 'F1, F2, F3, F4' },
+        { id: 6, nama: 'PT Shopee - Bandung', kategori: 'SLF', date: '25 Oktober 2024', perusahaan: 'PT Shopee', Aktivitas: '26 Oktober 2024', Progres: 'F1, F2, F3, F4' },
+        { id: 7, nama: 'PT GoTo - Semarang', kategori: 'Persiapan Bangun', date: '15 Oktober 2024', perusahaan: 'PT GoTo', Aktivitas: '16 Oktober 2024', Progres: 'F2, F3' },
+        { id: 8, nama: 'PT Blibli - Yogyakarta', kategori: 'Izin Usaha', date: '5 Oktober 2024', perusahaan: 'PT Blibli', Aktivitas: '6 Oktober 2024', Progres: 'F1, F3, F4' },
+        { id: 9, nama: 'PT Unilever - Surabaya', kategori: 'Izin Bangun', date: '30 Oktober 2024', perusahaan: 'PT Unilever', Aktivitas: '31 Oktober 2024', Progres: 'F1, F2, F3, F4' },
+        { id: 10, nama: 'PT Nestle - Malang', kategori: 'SLF', date: '1 November 2024', perusahaan: 'PT Nestle', Aktivitas: '2 November 2024', Progres: 'F1, F2' },
+        { id: 11, nama: 'PT Danone - Bandung', kategori: 'Persiapan Bangun', date: '12 Oktober 2024', perusahaan: 'PT Danone', Aktivitas: '13 Oktober 2024', Progres: 'F1, F4' },
+        { id: 12, nama: 'PT Astra - Jakarta', kategori: 'Izin Usaha', date: '28 Oktober 2024', perusahaan: 'PT Astra', Aktivitas: '29 Oktober 2024', Progres: 'F2, F3, F4' },
+        { id: 13, nama: 'PT BCA - Tangerang', kategori: 'Izin Bangun', date: '8 Oktober 2024', perusahaan: 'PT BCA', Aktivitas: '9 Oktober 2024', Progres: 'F3' },
+        { id: 14, nama: 'PT Mandiri - Bali', kategori: 'SLF', date: '3 November 2024', perusahaan: 'PT Mandiri', Aktivitas: '4 November 2024', Progres: 'F1, F2, F3' },
+        { id: 15, nama: 'PT BNI - Medan', kategori: 'Persiapan Bangun', date: '6 Oktober 2024', perusahaan: 'PT BNI', Aktivitas: '7 Oktober 2024', Progres: 'F1, F2, F3, F4' },
     ];
     const [selectedFormats, setSelectedFormats] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
@@ -80,6 +80,11 @@ const Project = () => {
         );
     });
 
+    const checkProgresComplete = (progres) => {
+        const requiredStages = ['F1', 'F2', 'F3', 'F4'];
+        const progresArray = progres.split(', ').map(stage => stage.trim());
+        return requiredStages.every(stage => progresArray.includes(stage));
+    };
 
     return (
         <ScrollArea className="h-[92vh] w-full">
@@ -165,7 +170,20 @@ const Project = () => {
                                 <div key={item.id} className="lg:w-1/4 md:w-1/2 p-4 w-1/2 ">
                                     <div onClick={() => navigate('/panel/proyek/detail')} className='bg-white p-[16px] h-full rounded-[16px] grid gap-[23px] cursor-pointer'>
                                         <div className='flex justify-between items-center'>
-                                            <BsFolderFill color='#F0C74B' size={32} />
+                                            <div className="relative inline-flex items-center justify-center">
+                                                <BsFolderFill
+                                                    color={checkProgresComplete(item.Progres) ? '#257DF9' : '#F0C74B'}
+                                                    size={32}
+                                                />
+                                                {checkProgresComplete(item.Progres) && (
+                                                    <TickCircle
+                                                        color="#FFFFFF"
+                                                        variant="Bold"
+                                                        size={12}
+                                                        className="absolute mt-[3px] flex items-center justify-center"
+                                                    />
+                                                )}
+                                            </div>
                                             <DropdownMenu>
                                                 <DropdownMenuTrigger asChild>
                                                     <Button variant="ghost" className="h-8 w-8 p-0 focus-visible:ring-0 focus-visible:ring-offset-0">

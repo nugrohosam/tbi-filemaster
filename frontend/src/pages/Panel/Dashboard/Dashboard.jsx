@@ -19,13 +19,15 @@ import {
 import { SearchNormal1, Calendar as CalendarIcon } from 'iconsax-react';
 import { Button } from '@/components/ui/button';
 import Analisa from './Analisa';
+import RecentFolder from './RecentFolder';
+import PekerjaanTerakhir from './PekerjaanTerakhir';
 
 const Dashboard = () => {
   const [date, setDate] = useState(new Date());
   return (
     <ScrollArea className="h-[92vh] w-full">
-      <div className=' h-full w-full  px-[24px]'>
-        <div className='flex justify-between items-center gap-[20px] py-[24px]'>
+      <div className=' h-full w-full px-[24px]'>
+        <div className='flex justify-between items-center gap-[20px] py-[16px]'>
           <h1 className='text-[24px] font-medium'>Dashboard</h1>
           <Popover>
             <PopoverTrigger asChild>
@@ -62,7 +64,12 @@ const Dashboard = () => {
             </PopoverContent>
           </Popover>
         </div>
+        <div className='grid gap-[24px] py-[12px]'>
         <Analisa/>
+        <RecentFolder/>
+        <PekerjaanTerakhir/>
+        </div>
+        
       </div>
     </ScrollArea>
   )

@@ -187,7 +187,7 @@ const InformasiProyek = () => {
             <div className='flex flex-wrap -m-4 pt-[16px] pb-[32px]'>
               <div className='lg:w-[32%] md:w-1/2 w-full px-4'>
                 <div className='w-full text-[14px] font-semibold grid gap-[8px] pb-[8px] text-[#717179]'>
-                  <h4>Deskripsi Project{isEditingDetail && (<span className='text-rose-500'>*</span>)}</h4>
+                  <h4>Deskripsi Project</h4>
                 </div>
               </div>
               <div className='lg:w-[68%] md:w-1/2 w-full px-4'>
@@ -424,7 +424,7 @@ const InformasiProyek = () => {
             <div className='flex flex-wrap -m-4 pt-[16px] pb-[32px]'>
               <div className='lg:w-[32%] md:w-1/2 w-full px-4'>
                 <div className='w-full text-[14px] font-semibold grid gap-[8px] pb-[8px] text-[#717179]'>
-                  <h4>Provinsi<span className='text-rose-500'>*</span></h4>
+                  <h4>Provinsi</h4>
                 </div>
               </div>
               <div className='lg:w-[68%] md:w-1/2 w-full px-4'>
@@ -448,7 +448,7 @@ const InformasiProyek = () => {
             <div className='flex flex-wrap -m-4 pt-[16px] pb-[32px]'>
               <div className='lg:w-[32%] md:w-1/2 w-full px-4'>
                 <div className='w-full text-[14px] font-semibold grid gap-[8px] pb-[8px] text-[#717179]'>
-                  <h4>Kabupaten / Kota<span className='text-rose-500'>*</span></h4>
+                  <h4>Kabupaten / Kota</h4>
                 </div>
               </div>
               <div className='lg:w-[68%] md:w-1/2 w-full px-4'>
@@ -472,7 +472,7 @@ const InformasiProyek = () => {
             <div className='flex flex-wrap -m-4 pt-[16px] pb-[32px]'>
               <div className='lg:w-[32%] md:w-1/2 w-full px-4'>
                 <div className='w-full text-[14px] font-semibold grid gap-[8px] pb-[8px] text-[#717179]'>
-                  <h4>Kecamatan / Desa<span className='text-rose-500'>*</span></h4>
+                  <h4>Kecamatan / Desa</h4>
                 </div>
               </div>
               <div className='lg:w-[68%] md:w-1/2 w-full px-4'>
