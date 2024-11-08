@@ -5,16 +5,19 @@ import Dashboard from '../Dashboard/Dashboard';
 import ProjectDetail from '../Proyek/ProjectDetail/ProjectDetail';
 import Project from '../Proyek/Project/Project';
 import { Toaster } from "@/components/ui/toaster"
+import { SelectedIdProvider } from '../Proyek/Project/SelectIdProject';
 
 const MainPanel = () => {
     return (
         <Layout>
             <Toaster/>
             <Routes>
-                <Route path="*" element={<Dashboard />} />
-                <Route path="dashboard" element={<Dashboard/>} />
-                <Route path="proyek" element={<Project />} />
-                <Route path="proyek/detail" element={<ProjectDetail />} />
+                <Route path="*" element={<SelectedIdProvider><Dashboard/></SelectedIdProvider>} />
+                <Route path="dashboard" element={<SelectedIdProvider><Dashboard/></SelectedIdProvider>} />
+                
+                <Route path="proyek" element={<SelectedIdProvider><Project /></SelectedIdProvider>} />
+                <Route path="proyek/detail" element={<SelectedIdProvider><ProjectDetail /></SelectedIdProvider>} />
+                
             </Routes>
         </Layout>
     )

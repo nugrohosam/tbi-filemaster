@@ -1,9 +1,13 @@
-import React,{useState} from 'react'
+import React,{useState, useContext} from 'react'
 import TableData from './TableData'
 import { ScrollArea } from "@/components/ui/scroll-area"
 import Form from './Form'
+import Folder from './Folder'
+import { VisibilityContext } from '../../MainPanel/Layout';
+
 
 const ProjectDetail = () => {
+  const { isFolderVisible } = useContext(VisibilityContext);
   const [uploadedFile, setUploadedFile] = useState(null);
   const [uploadedFileF2, setUploadedFileF2] = useState(null);
   const [uploadedFileF3pdf, setUploadedFileF3pdf] = useState(null);
@@ -22,7 +26,14 @@ const ProjectDetail = () => {
     <ScrollArea className="h-[92vh] w-full bg-white">
       <div className=" py-3 px-6 mx-auto">
         <div className="flex flex-wrap -m-4">
-          <div className="lg:w-[72%]  md:w-1/2  w-full">
+        {isFolderVisible && (
+            <div className="lg:w-[20%] md:w-1/2 w-full">
+              <Folder />
+            </div>
+          )}
+          <div className={`${
+              isFolderVisible ? 'lg:w-[52%] border-l' : 'lg:w-[72%]'
+            } md:w-1/2 w-full `}>
             <TableData 
             uploadedFile={uploadedFile}
             uploadedFileF2={uploadedFileF2}

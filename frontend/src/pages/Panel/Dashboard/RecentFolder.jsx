@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import { Button } from '@/components/ui/button';
 import { useNavigate } from 'react-router-dom';
 import { BsFolderFill } from "react-icons/bs";
@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { ArrowUpDown, ChevronDown, MoreVertical } from "lucide-react"
 import { Add, TickCircle } from 'iconsax-react';
+import { SelectedIdContext } from '../Proyek/Project/SelectIdProject';
 
 const Data = [
     { id: 1, nama: 'PT Indomart - Gresik', kategori: 'Izin Bangun', date: '14 Oktober 2024', perusahaan: 'PT Indomaret', Aktivitas: '15 Oktober 2024', Progres: 'F1, F2, F3, F4' },
@@ -29,6 +30,11 @@ const RecentFolder = () => {
         const progresArray = progres.split(', ').map(stage => stage.trim());
         return requiredStages.every(stage => progresArray.includes(stage));
     };
+    const { selectedId, updateSelectedId } = useContext(SelectedIdContext);
+
+    const handleClick = (id) => {
+        updateSelectedId(id);
+    };
     return (
         <div className=''>
             <div className='flex justify-between items-center'>
@@ -41,7 +47,7 @@ const RecentFolder = () => {
                 <div className="flex flex-wrap -m-4">
                     {Data.map((item) => (
                         <div key={item.id} className="lg:w-1/4 md:w-1/2 p-4 w-1/2 ">
-                            <div onClick={() => navigate('/panel/proyek/detail')} className='bg-white p-[16px] h-full rounded-[16px] grid gap-[23px] cursor-pointer'>
+                            <div onClick={() => {navigate('/panel/proyek/detail'); handleClick(item.id);}} className='bg-white p-[16px] h-full rounded-[16px] grid gap-[23px] cursor-pointer'>
                                 <div className='flex justify-between items-center'>
                                     <div className="relative inline-flex items-center justify-center">
                                         <BsFolderFill

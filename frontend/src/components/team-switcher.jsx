@@ -1,6 +1,7 @@
 import * as React from "react"
 import { ChevronsUpDown, Plus } from "lucide-react"
-
+import { useContext } from "react";
+import { VisibilityContext } from '../pages/Panel/MainPanel/Layout';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -25,6 +26,8 @@ export function TeamSwitcher({
   const { isMobile } = useSidebar()
   const [activeTeam, setActiveTeam] = React.useState(teams[0])
 
+  const { setIsFolderVisible } = useContext(VisibilityContext);
+
   return (
     (<SidebarMenu>
       <SidebarMenuItem>
@@ -33,7 +36,7 @@ export function TeamSwitcher({
             <SidebarMenuButton
               size="lg"
               className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground px-[24px]">
-                <SidebarTrigger className=' flex items-center gap-[8px]'>
+                <SidebarTrigger onClick={() => setIsFolderVisible((prev) => !prev)} className=' flex items-center gap-[8px]'>
                 <img src={Logo} alt="logo" className='w-[30px] h-[32.14px]' />
               
               <div className="grid flex-1 text-left text-[20px] leading-tight">
