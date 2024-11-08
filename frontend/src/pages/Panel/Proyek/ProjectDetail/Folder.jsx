@@ -48,13 +48,13 @@ const Folder = () => {
     const handleClick = (id) => {
         updateSelectedId(id);
     };
-    
+
     return (
         <ScrollArea className='h-full'>
             <div className='py-[16px] w-full'>
                 <div className='px-[8px] grid gap-[8px] w-full'>
                     {Data.map((item) => (
-                        <div key={item.id}  onClick={() => handleClick(item.id)} className='w-full py-[16px] px-[8px] flex gap-[16px] items-center hover:bg-slate-50 hover:text-[#0036AA] cursor-pointer'>
+                        <div key={item.id} onClick={() => handleClick(item.id)} className='w-full py-[16px] px-[8px] flex gap-[16px] items-center hover:bg-slate-50 hover:text-[#0036AA] cursor-pointer'>
                             <div onClick={() => navigate('/panel/proyek/detail')} className="relative inline-flex items-center justify-center">
                                 <BsFolderFill
                                     color={checkProgresComplete(item.Progres) ? '#257DF9' : '#F0C74B'}
@@ -70,7 +70,7 @@ const Folder = () => {
                                 )}
                             </div>
                             <div onClick={() => navigate('/panel/proyek/detail')} className='grid w-full'>
-                                <h1  className={`text-[14px] font-bold ${selectedId === item.id ? 'text-[#0036AA]' : ''}`}>{item.nama.length > 20 ? `${item.nama.slice(0, 20)}...` : item.nama}</h1>
+                                <h1 className={`text-[14px] font-bold ${selectedId === item.id ? 'text-[#0036AA]' : ''}`}>{item.nama.length > 20 ? `${item.nama.slice(0, 20)}...` : item.nama}</h1>
                                 <p className='text-[12px] text-[#717179] font-medium'>{item.kategori}</p>
                             </div>
                             <DropdownMenu>
@@ -81,8 +81,11 @@ const Folder = () => {
                                     </Button>
                                 </DropdownMenuTrigger>
                                 <DropdownMenuContent align="start" className="w-[100px]">
-                                    <DropdownMenuItem className="p-3 gap-3 text-[14px] font-medium text-rose-500 focus:text-rose-500">
-                                        Delete
+                                    <DropdownMenuItem className="p-3 gap-3 text-[14px] font-medium">
+                                        View
+                                    </DropdownMenuItem>
+                                    <DropdownMenuItem className="p-3 gap-3 text-[14px] font-medium ">
+                                        Archive
                                     </DropdownMenuItem>
                                 </DropdownMenuContent>
                             </DropdownMenu>

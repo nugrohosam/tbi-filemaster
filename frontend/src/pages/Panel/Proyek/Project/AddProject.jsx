@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Button } from "@/components/ui/button"
 import {
     Dialog,
@@ -11,7 +11,7 @@ import {
     DialogClose,
 } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
-import { Add , TickCircle } from 'iconsax-react';
+import { Add, TickCircle } from 'iconsax-react';
 import { Textarea } from '@/components/ui/textarea';
 import { X } from "lucide-react";
 import {
@@ -23,6 +23,8 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select"
+
+import { ScrollArea } from '@/components/ui/scroll-area';
 
 
 const indonesiaData = {
@@ -38,6 +40,20 @@ const indonesiaData = {
 
 
 const AddProject = () => {
+    const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+    const [isFolderVisible, setIsFolderVisible] = useState(false);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth < 768);
+        };
+
+        window.addEventListener("resize", handleResize);
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        };
+    }, []);
+
     const [currentStep, setCurrentStep] = useState(0);
     const [ContentStep, setContentStep] = useState(0);
     const [selectedProvince, setSelectedProvince] = React.useState("");
@@ -63,26 +79,36 @@ const AddProject = () => {
             </DialogTrigger>
             {ContentStep === 0 && (
                 <DialogContent className="sm:max-w-[820px] ">
-                    <div className='flex justify-end'>
-                        <DialogClose asChild>
-                            <Button type="button" variant="ghost" className='p-0 h-[20px]'>
-                                <X className='h-[16px] w-[16px]' />
-                            </Button>
-                        </DialogClose>
-                    </div>
-                    <DialogHeader className='py-[16px]'>
-                        <DialogTitle className='text-[18px] font-semibold'>Tambah Proyek Baru</DialogTitle>
-                    </DialogHeader>
+                    {!isMobile && (
+                        <>
+                            <div className='flex justify-end'>
+                                <DialogClose asChild>
+                                    <Button type="button" variant="ghost" className='p-0 h-[20px]'>
+                                        <X className='h-[16px] w-[16px]' />
+                                    </Button>
+                                </DialogClose>
+                            </div>
+                            <DialogHeader className='py-[16px]'>
+                                <DialogTitle className='text-[18px] font-semibold'>Tambah Proyek Baru</DialogTitle>
+                            </DialogHeader>
+                        </>
+                    )}
+
                     <div className='grid gsp-[16px]'>
-                        <div className='flex flex-wrap -m-4 pt-[16px] pb-[32px]'>
-                            <div className='className="lg:w-1/2 md:w-1/2 px-4 w-full '>
-                                <div className='w-full border-t-4 border-[#0036AA] text-[#0036AA] text-[14px] font-semibold'>Detail Informasi Proyek</div>
-                            </div>
-                            <div className='className="lg:w-1/2 md:w-1/2 px-4 w-full '>
-                                <div className={`w-full border-t-4 text-[#0036AA] text-[14px] font-semibold ${currentStep === 1 ? 'border-[#0036AA]' : 'border-slate-300'}`}>Lokasi Pelaksanaan Proyek</div>
-                            </div>
-                        </div>
-                        <div className='w-full border' />
+                        {!isMobile && (
+                            <>
+                                <div className='flex flex-wrap -m-4 pt-[16px] pb-[32px]'>
+                                    <div className='className="lg:w-1/2 md:w-1/2 px-4 w-full '>
+                                        <div className='w-full border-t-4 border-[#0036AA] text-[#0036AA] text-[14px] font-semibold'>Detail Informasi Proyek</div>
+                                    </div>
+                                    <div className='className="lg:w-1/2 md:w-1/2 px-4 w-full '>
+                                        <div className={`w-full border-t-4 text-[#0036AA] text-[14px] font-semibold ${currentStep === 1 ? 'border-[#0036AA]' : 'border-slate-300'}`}>Lokasi Pelaksanaan Proyek</div>
+                                    </div>
+                                </div>
+
+                                <div className='w-full border' />
+                            </>
+                        )}
                         {currentStep === 0 && (
                             <>
                                 <div className='grid gap-[16px] py-[16px]'>
@@ -293,17 +319,48 @@ const AddProject = () => {
                             </>
                         )}
                     </div>
-                    {currentStep === 0 && (
-                        <DialogFooter>
-                            <Button onClick={() => setCurrentStep(1)} className='bg-[#0036AA] h-[40px] text-[14px] hover:bg-[#2b4a8e]'>Simpan</Button>
-                        </DialogFooter>
+
+                    {!isMobile && (
+                        <>
+                            {currentStep === 0 && (
+                                <DialogFooter>
+                                    <Button onClick={() => setCurrentStep(1)} className='bg-[#0036AA] h-[40px] text-[14px] hover:bg-[#2b4a8e]'>Simpan</Button>
+                                </DialogFooter>
+                            )}
+                            {currentStep === 1 && (
+                                <DialogFooter>
+                                    <Button onClick={() => setContentStep(1)} variant="secondary" type="submit" className=' h-[40px] text-[14px] '>Lewati</Button>
+                                    <Button onClick={() => setContentStep(1)} type="submit" className='bg-[#0036AA] h-[40px] text-[14px] hover:bg-[#2b4a8e]'>Simpan</Button>
+                                </DialogFooter>
+                            )}
+                        </>
                     )}
-                    {currentStep === 1 && (
-                        <DialogFooter>
-                            <Button onClick={() => setContentStep(1)} variant="secondary" type="submit" className=' h-[40px] text-[14px] '>Lewati</Button>
-                            <Button onClick={() => setContentStep(1)} type="submit" className='bg-[#0036AA] h-[40px] text-[14px] hover:bg-[#2b4a8e]'>Simpan</Button>
-                        </DialogFooter>
+                    {isMobile && (
+                        <div className='fixed bottom-0 w-full bg-white'>
+                            {currentStep === 0 && (
+                                <DialogFooter className='bg-white w-full flex justify-between'>
+                                    <Button onClick={() => setContentStep(1)} variant="secondary" type="submit" className='h-[40px] text-[14px]'>
+                                        Lewati
+                                    </Button>
+                                    <Button onClick={() => setCurrentStep(1)} className='bg-[#0036AA] h-[40px] text-[14px] hover:bg-[#2b4a8e]'>
+                                        Simpan
+                                    </Button>
+                                </DialogFooter>
+                            )}
+                            {currentStep === 1 && (
+                                <DialogFooter className='bg-white w-full'>
+                                    <Button onClick={() => setContentStep(1)} variant="secondary" type="submit" className='h-[40px] text-[14px]'>
+                                        Lewati
+                                    </Button>
+                                    <Button onClick={() => setContentStep(1)} type="submit" className='bg-[#0036AA] h-[40px] text-[14px] hover:bg-[#2b4a8e]'>
+                                        Simpan
+                                    </Button>
+                                </DialogFooter>
+                            )}
+                        </div>
                     )}
+
+
                 </DialogContent>
             )}
             {ContentStep === 1 && (
