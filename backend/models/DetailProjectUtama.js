@@ -1,7 +1,16 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
 
-class DetailProjectUtama extends Model {}
+class DetailProjectUtama extends Model {
+    toJSON() {
+        return {
+          ...this.get(),
+          createdAt: this.createdAt ? this.createdAt.toISOString() : null,
+          updatedAt: this.updatedAt ? this.updatedAt.toISOString() : null,
+          deletedAt: this.deletedAt ? this.deletedAt.toISOString() : null,
+        };
+      }
+}
 
 DetailProjectUtama.init({
     id_project_utama: {
@@ -21,8 +30,13 @@ DetailProjectUtama.init({
         type: DataTypes.STRING,
         allowNull: true,
     },
+    other_file: {
+        type: DataTypes.ENUM('Form F3.pdf', 'Form F3.docx', 'Gambar.pdf', 'Analisa Struktur.pdf', 'Spek Teknis.pdf', 
+                             'Perhitungan Air Hujan.pdf', 'Perhitungan Air Bersih.pdf', 'Perhitungan Air Kotor.pdf', 'Kajian dan Simak (SLF).pdf'),
+        allowNull: true,
+      },
     pekerjaan: {
-        type: DataTypes.STRING,
+        type: DataTypes.ENUM('F1', 'F2', 'F3', 'F4'),
         allowNull: false,
     },
     createdAt: {

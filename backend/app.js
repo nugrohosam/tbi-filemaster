@@ -3,6 +3,7 @@ const cors = require("cors"); // Uncommented to enable CORS
 const dotenv = require("dotenv");
 const sequelize = require("./config/database");
 const projectRoutes = require("./routes/ProjectRoute");
+const DetailProjectUtamaRoutes = require('./routes/DetailProjectUtamaRoute');
 const swaggerDocs = require("./swagger");
 
 dotenv.config();
@@ -24,8 +25,12 @@ app.use((req, res, next) => {
     next();
 });
 
+// Middleware untuk serve static files jika ingin mengakses file upload
+app.use('/uploads', express.static('uploads'));
+
 // Routes
 app.use("/api/projects", projectRoutes);
+app.use('/api/detail-project-utama', DetailProjectUtamaRoutes);
 
 // Swagger Documentation
 swaggerDocs(app);
