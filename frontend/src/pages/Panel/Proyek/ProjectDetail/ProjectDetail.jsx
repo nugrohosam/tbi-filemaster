@@ -27,12 +27,12 @@ const ProjectDetail = () => {
       <div className=" py-3 px-6 mx-auto">
         <div className="flex flex-wrap -m-4">
         {isFolderVisible && (
-            <div className="lg:w-[20%] md:w-1/2 w-full">
+            <div className="lg:w-[20%] md:w-1/2 w-full h-full">
               <Folder />
             </div>
           )}
           <div className={`${
-              isFolderVisible ? 'lg:w-[52%] border-l' : 'lg:w-[72%]'
+              isFolderVisible ? 'lg:w-[56%] border-l' : 'lg:w-[72%]'
             } md:w-1/2 w-full `}>
             <TableData 
             uploadedFile={uploadedFile}
@@ -41,7 +41,9 @@ const ProjectDetail = () => {
             uploadedFileF4={isFileUploadedF4}
             />
           </div>
-          <div className="lg:w-[28%] md:w-1/2  w-full border">
+          <div className={`${
+              isFolderVisible ? 'lg:w-[24%]' : 'lg:w-[28%]'
+            } md:w-1/2 w-full border`} >
             <Form
               uploadedFile={uploadedFile}
               setUploadedFile={setUploadedFile}

@@ -50,7 +50,7 @@ const Folder = () => {
     };
     
     return (
-        <ScrollArea className='h-[108vh]'>
+        <ScrollArea className='h-full'>
             <div className='py-[16px] w-full'>
                 <div className='px-[8px] grid gap-[8px] w-full'>
                     {Data.map((item) => (
