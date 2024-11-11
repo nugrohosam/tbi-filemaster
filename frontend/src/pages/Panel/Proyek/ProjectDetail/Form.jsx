@@ -9,6 +9,9 @@ import { Button } from '@/components/ui/button'
 import { Export, DocumentForward, Trash, DocumentText, DocumentUpload } from 'iconsax-react';
 import Pdf from '../../../../assets/pdf.png'
 import Docx from '../../../../assets/docx.png'
+import HapusFile from './HapusFile';
+import EditFile from './EditFile';
+
 const Form = ({ uploadedFile, setUploadedFile, uploadedFileF2, setUploadedFileF2, uploadedFileF3pdf, setUploadedFileF3pdf, uploadedFileF3docx, setUploadedFileF3docx, uploadedFileF4gambar, setUploadedFileF4gambar, uploadedFileF4analisa, setUploadedFileF4analisa, uploadedFileF4spek, setUploadedFileF4spek, uploadedFileF4airhujan, setUploadedFileF4airhujan, uploadedFileF4airbersih, setUploadedFileF4airbersih, uploadedFileF4airkotor, setUploadedFileF4airkotor, uploadedFileF4SLF, setUploadedFileF4SLF }) => {
 
 
@@ -393,16 +396,8 @@ const Form = ({ uploadedFile, setUploadedFile, uploadedFileF2, setUploadedFileF2
                                     </div>
                                 </div>
                                 <div className='flex gap-[12px]'>
-                                    <Button onClick={handleUploadClick} variant="outline" className='h-[36px] px-[12px]'>
-                                        <DocumentUpload size={16} color='#257DF9' variant="Bulk" />
-                                    </Button>
-                                    <Button
-                                        variant="outline"
-                                        className='h-[36px] px-[12px]'
-                                        onClick={() => setUploadedFile(null)}
-                                    >
-                                        <Trash size={16} color='#EF4444' />
-                                    </Button>
+                                    <EditFile handleUploadClick={handleUploadClick} />
+                                    <HapusFile setUploadedFile={setUploadedFile} />
                                 </div>
                             </div>
                         )}
@@ -443,16 +438,8 @@ const Form = ({ uploadedFile, setUploadedFile, uploadedFileF2, setUploadedFileF2
                                     </div>
                                 </div>
                                 <div className='flex gap-[12px]'>
-                                    <Button onClick={handleUploadClickF2} variant="outline" className='h-[36px] px-[12px]'>
-                                        <DocumentUpload size={16} color='#257DF9' variant="Bulk" />
-                                    </Button>
-                                    <Button
-                                        variant="outline"
-                                        className='h-[36px] px-[12px]'
-                                        onClick={() => setUploadedFileF2(null)}
-                                    >
-                                        <Trash size={16} color='#EF4444' />
-                                    </Button>
+                                    <EditFile handleUploadClick={handleUploadClickF2} />
+                                    <HapusFile setUploadedFile={setUploadedFileF2} />
                                 </div>
                             </div>
                         )}
@@ -486,16 +473,8 @@ const Form = ({ uploadedFile, setUploadedFile, uploadedFileF2, setUploadedFileF2
                                     </div>
                                 </div>
                                 <div className='flex gap-[12px]'>
-                                    <Button onClick={handleUploadClickF3pdf} variant="outline" className='h-[36px] px-[12px]'>
-                                        <DocumentUpload size={16} color='#257DF9' variant="Bulk" />
-                                    </Button>
-                                    <Button
-                                        variant="outline"
-                                        className='h-[36px] px-[12px]'
-                                        onClick={() => setUploadedFileF3pdf(null)}
-                                    >
-                                        <Trash size={16} color='#EF4444' />
-                                    </Button>
+                                <EditFile handleUploadClick={handleUploadClickF3pdf} />
+                                    <HapusFile setUploadedFile={setUploadedFileF3pdf} />
                                 </div>
                             </div>
                         )}
@@ -520,16 +499,8 @@ const Form = ({ uploadedFile, setUploadedFile, uploadedFileF2, setUploadedFileF2
                                     </div>
                                 </div>
                                 <div className='flex gap-[12px]'>
-                                    <Button onClick={handleUploadClickF3docx} variant="outline" className='h-[36px] px-[12px]'>
-                                        <DocumentUpload size={16} color='#257DF9' variant="Bulk" />
-                                    </Button>
-                                    <Button
-                                        variant="outline"
-                                        className='h-[36px] px-[12px]'
-                                        onClick={() => setUploadedFileF3docx(null)}
-                                    >
-                                        <Trash size={16} color='#EF4444' />
-                                    </Button>
+                                <EditFile handleUploadClick={handleUploadClickF3docx} />
+                                    <HapusFile setUploadedFile={setUploadedFileF3docx} />
                                 </div>
                             </div>
                         )}
@@ -584,16 +555,8 @@ const Form = ({ uploadedFile, setUploadedFile, uploadedFileF2, setUploadedFileF2
                                     </div>
                                 </div>
                                 <div className='flex gap-[12px]'>
-                                    <Button onClick={handleUploadClickF4gambar} variant="outline" className='h-[36px] px-[12px]'>
-                                        <DocumentUpload size={16} color='#257DF9' variant="Bulk" />
-                                    </Button>
-                                    <Button
-                                        variant="outline"
-                                        className='h-[36px] px-[12px]'
-                                        onClick={() => setUploadedFileF4gambar(null)}
-                                    >
-                                        <Trash size={16} color='#EF4444' />
-                                    </Button>
+                                <EditFile handleUploadClick={handleUploadClickF4gambar} />
+                                    <HapusFile setUploadedFile={setUploadedFileF4gambar} />
                                 </div>
                             </div>
                         )}
@@ -631,16 +594,8 @@ const Form = ({ uploadedFile, setUploadedFile, uploadedFileF2, setUploadedFileF2
                                     </div>
                                 </div>
                                 <div className='flex gap-[12px]'>
-                                    <Button onClick={handleUploadClickF4analisa} variant="outline" className='h-[36px] px-[12px]'>
-                                        <DocumentUpload size={16} color='#257DF9' variant="Bulk" />
-                                    </Button>
-                                    <Button
-                                        variant="outline"
-                                        className='h-[36px] px-[12px]'
-                                        onClick={() => setUploadedFileF4analisa(null)}
-                                    >
-                                        <Trash size={16} color='#EF4444' />
-                                    </Button>
+                                <EditFile handleUploadClick={handleUploadClickF4analisa} />
+                                    <HapusFile setUploadedFile={setUploadedFileF4analisa} />
                                 </div>
                             </div>
                         )}
@@ -678,16 +633,8 @@ const Form = ({ uploadedFile, setUploadedFile, uploadedFileF2, setUploadedFileF2
                                     </div>
                                 </div>
                                 <div className='flex gap-[12px]'>
-                                    <Button onClick={handleUploadClickF4spek} variant="outline" className='h-[36px] px-[12px]'>
-                                        <DocumentUpload size={16} color='#257DF9' variant="Bulk" />
-                                    </Button>
-                                    <Button
-                                        variant="outline"
-                                        className='h-[36px] px-[12px]'
-                                        onClick={() => setUploadedFileF4spek(null)}
-                                    >
-                                        <Trash size={16} color='#EF4444' />
-                                    </Button>
+                                <EditFile handleUploadClick={handleUploadClickF4spek} />
+                                    <HapusFile setUploadedFile={setUploadedFileF4spek} />
                                 </div>
                             </div>
                         )}
@@ -725,16 +672,8 @@ const Form = ({ uploadedFile, setUploadedFile, uploadedFileF2, setUploadedFileF2
                                     </div>
                                 </div>
                                 <div className='flex gap-[12px]'>
-                                    <Button onClick={handleUploadClickF4airhujan} variant="outline" className='h-[36px] px-[12px]'>
-                                        <DocumentUpload size={16} color='#257DF9' variant="Bulk" />
-                                    </Button>
-                                    <Button
-                                        variant="outline"
-                                        className='h-[36px] px-[12px]'
-                                        onClick={() => setUploadedFileF4airhujan(null)}
-                                    >
-                                        <Trash size={16} color='#EF4444' />
-                                    </Button>
+                                <EditFile handleUploadClick={handleUploadClickF4airhujan} />
+                                    <HapusFile setUploadedFile={setUploadedFileF4airhujan} />
                                 </div>
                             </div>
                         )}
@@ -772,16 +711,8 @@ const Form = ({ uploadedFile, setUploadedFile, uploadedFileF2, setUploadedFileF2
                                     </div>
                                 </div>
                                 <div className='flex gap-[12px]'>
-                                    <Button onClick={handleUploadClickF4airbersih} variant="outline" className='h-[36px] px-[12px]'>
-                                        <DocumentUpload size={16} color='#257DF9' variant="Bulk" />
-                                    </Button>
-                                    <Button
-                                        variant="outline"
-                                        className='h-[36px] px-[12px]'
-                                        onClick={() => setUploadedFileF4airbersih(null)}
-                                    >
-                                        <Trash size={16} color='#EF4444' />
-                                    </Button>
+                                <EditFile handleUploadClick={handleUploadClickF4airbersih} />
+                                    <HapusFile setUploadedFile={setUploadedFileF4airbersih} />
                                 </div>
                             </div>
                         )}
@@ -819,16 +750,8 @@ const Form = ({ uploadedFile, setUploadedFile, uploadedFileF2, setUploadedFileF2
                                     </div>
                                 </div>
                                 <div className='flex gap-[12px]'>
-                                    <Button onClick={handleUploadClickF4airkotor} variant="outline" className='h-[36px] px-[12px]'>
-                                        <DocumentUpload size={16} color='#257DF9' variant="Bulk" />
-                                    </Button>
-                                    <Button
-                                        variant="outline"
-                                        className='h-[36px] px-[12px]'
-                                        onClick={() => setUploadedFileF4airkotor(null)}
-                                    >
-                                        <Trash size={16} color='#EF4444' />
-                                    </Button>
+                                <EditFile handleUploadClick={handleUploadClickF4airkotor} />
+                                    <HapusFile setUploadedFile={setUploadedFileF4airkotor} />
                                 </div>
                             </div>
                         )}
@@ -866,16 +789,8 @@ const Form = ({ uploadedFile, setUploadedFile, uploadedFileF2, setUploadedFileF2
                                     </div>
                                 </div>
                                 <div className='flex gap-[12px]'>
-                                    <Button onClick={handleUploadClickF4SLF} variant="outline" className='h-[36px] px-[12px]'>
-                                        <DocumentUpload size={16} color='#257DF9' variant="Bulk" />
-                                    </Button>
-                                    <Button
-                                        variant="outline"
-                                        className='h-[36px] px-[12px]'
-                                        onClick={() => setUploadedFileF4SLF(null)}
-                                    >
-                                        <Trash size={16} color='#EF4444' />
-                                    </Button>
+                                <EditFile handleUploadClick={handleUploadClickF4SLF} />
+                                    <HapusFile setUploadedFile={setUploadedFileF4SLF} />
                                 </div>
                             </div>
                         )}

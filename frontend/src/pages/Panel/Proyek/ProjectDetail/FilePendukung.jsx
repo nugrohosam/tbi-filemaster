@@ -11,13 +11,21 @@ import Pdf from '../../../../assets/pdf.png';
 import Docx from '../../../../assets/docx.png';
 import File from '../../../../assets/file.png';
 import { Add } from 'iconsax-react';
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogFooter,
+    DialogHeader,
+    DialogTitle,
+    DialogClose
+} from "@/components/ui/dialog";
+import { X } from "lucide-react";
 
 const FilePendukung = () => {
-    const [uploadedFiles, setUploadedFiles] = useState([
-        // { id: 1, name: 'Informasi Pekerjaan.pdf', file: null },
-        // { id: 2, name: 'Informasi Pekerjaan.docx', file: null },
-        // { id: 3, name: 'Informasi Pekerjaan.docx', file: null },
-    ]);
+    const [uploadedFiles, setUploadedFiles] = useState([]);
+    const [isDialogOpen, setDialogOpen] = useState(false);
+    const [selectedFileId, setSelectedFileId] = useState(null);
 
     const handleFileChange = (event) => {
         const files = Array.from(event.target.files);
@@ -64,9 +72,11 @@ const FilePendukung = () => {
         }
     };
 
-    const handleDelete = (id) => {
-        const updatedFiles = uploadedFiles.filter(file => file.id !== id);
+    const handleDelete = () => {
+        const updatedFiles = uploadedFiles.filter(file => file.id !== selectedFileId);
         setUploadedFiles(updatedFiles);
+        setDialogOpen(false);
+        setSelectedFileId(null);
     };
 
     return (
@@ -90,7 +100,7 @@ const FilePendukung = () => {
                 {uploadedFiles.length > 0 ? (
                     <div className="flex flex-wrap -m-4 mt-[12px]">
                         {uploadedFiles.map((item) => (
-                            <div key={item.id} title={item.name} className="lg:w-1/5 md:w-1/2 p-4 w-1/2" >
+                            <div key={item.id} title={item.name} className="lg:w-1/5 md:w-1/2 p-4 w-1/2">
                                 <div className="grid justify-end">
                                     <DropdownMenu>
                                         <DropdownMenuTrigger asChild>
@@ -100,20 +110,23 @@ const FilePendukung = () => {
                                             </Button>
                                         </DropdownMenuTrigger>
                                         <DropdownMenuContent align="start" className="w-[164px]">
-                                            <DropdownMenuItem 
-                                                onClick={() => handleView(item.file)} 
+                                            <DropdownMenuItem
+                                                onClick={() => handleView(item.file)}
                                                 className="p-3 gap-3 text-[14px] font-medium"
                                             >
                                                 View
                                             </DropdownMenuItem>
-                                            <DropdownMenuItem 
-                                                onClick={() => handleDownload(item.file)} 
+                                            <DropdownMenuItem
+                                                onClick={() => handleDownload(item.file)}
                                                 className="p-3 gap-3 text-[14px] font-medium"
                                             >
                                                 Download
                                             </DropdownMenuItem>
-                                            <DropdownMenuItem 
-                                                onClick={() => handleDelete(item.id)} 
+                                            <DropdownMenuItem
+                                                onClick={() => {
+                                                    setSelectedFileId(item.id);
+                                                    setDialogOpen(true);
+                                                }}
                                                 className="p-3 gap-3 text-[14px] font-medium text-rose-500 focus:text-rose-500"
                                             >
                                                 Delete
@@ -130,7 +143,7 @@ const FilePendukung = () => {
                                         />
                                     </div>
                                     <h3 className="text-center text-[12px] font-medium">
-                                    {item.name.length > 20 ? `${item.name.slice(0, 20)}...` : item.name}
+                                        {item.name.length > 20 ? `${item.name.slice(0, 20)}...` : item.name}
                                     </h3>
                                 </div>
                             </div>
@@ -144,6 +157,34 @@ const FilePendukung = () => {
                     </div>
                 )}
             </div>
+
+            <Dialog open={isDialogOpen} onOpenChange={setDialogOpen}>
+                <DialogContent className="sm:max-w-[512px]">
+                    <div className='flex justify-end'>
+                        <DialogClose asChild>
+                            <Button type="button" variant="ghost" className='p-0 h-[20px]'>
+                                <X className='h-[16px] w-[16px]' />
+                            </Button>
+                        </DialogClose>
+                    </div>
+                    <DialogHeader>
+                        <DialogTitle className='text-[18px] font-semibold'>Apakah anda yakin untuk menghapus file?</DialogTitle>
+                        <DialogDescription className='text-[14px] text-[#71717A]'>
+                            File yang terhapus tidak dapat dipulihkan kembali. Pastikan untuk mengecek ulang sebelum menghapus file.
+                        </DialogDescription>
+                    </DialogHeader>
+                    <DialogFooter className='mt-[16px]'>
+                        <DialogClose asChild>
+                            <Button variant="outline" className='text-[14px] font-medium h-[40px]'>
+                                Batal
+                            </Button>
+                        </DialogClose>
+                        <Button onClick={handleDelete} className='bg-[#EF4343] text-[14px] hover:bg-[#EF4343] h-[40px]'>
+                            Hapus
+                        </Button>
+                    </DialogFooter>
+                </DialogContent>
+            </Dialog>
         </div>
     );
 };

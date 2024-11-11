@@ -17,16 +17,30 @@ import { ScrollArea } from "@/components/ui/scroll-area"
 import Pdf from '../../../../assets/pdf.png'
 import Docx from '../../../../assets/docx.png'
 import File from '../../../../assets/file.png'
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogFooter,
+    DialogHeader,
+    DialogTitle,
+    DialogClose
+} from "@/components/ui/dialog";
+import { X } from "lucide-react";
+
+
 const FileUtama = () => {
+    const [isDialogOpen, setDialogOpen] = useState(false);
     const DataRole = [
         { id: "m5gr84i9", name: 'pdf' },
         { id: "m5gr84i7", name: 'docx' },
     ];
-    const DataFileUtama = [
+    const [DataFileUtama, setDataFileUtama] = useState([
         { id: 1, file: 'Form Prndaftaran.pdf' , format:'pdf'},
         { id: 2, file: 'F3.docx', format:'docx' },
         { id: 3, file: 'Informasi Pekerjaan.docx', format:'docx' },
-    ]
+    ])
+    const [selectedFileId, setSelectedFileId] = useState(null);
 
     const [selectedFormats, setSelectedFormats] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
@@ -43,6 +57,13 @@ const FileUtama = () => {
         (selectedFormats.length === 0 || selectedFormats.includes(item.format)) &&
         item.file.toLowerCase().includes(searchTerm.toLowerCase())
       );
+
+      const handleDelete = () => {
+        const updatedFiles = DataFileUtama.filter(file => file.id !== selectedFileId);
+        setDataFileUtama(updatedFiles);
+        setDialogOpen(false);
+        setSelectedFileId(null);
+    };
 
 
     return (
@@ -102,7 +123,12 @@ const FileUtama = () => {
                                             <DropdownMenuItem className="p-3 gap-3 text-[14px] font-medium ">
                                                 Download
                                             </DropdownMenuItem>
-                                            <DropdownMenuItem className="p-3 gap-3 text-[14px] font-medium text-rose-500 focus:text-rose-500">
+                                            <DropdownMenuItem  
+                                            onClick={() => {
+                                                setSelectedFileId(item.id);
+                                                    setDialogOpen(true);
+                                                }} 
+                                                className="p-3 gap-3 text-[14px] font-medium text-rose-500 focus:text-rose-500">
                                                 Delete
                                             </DropdownMenuItem>
                                         </DropdownMenuContent>
@@ -132,7 +158,33 @@ const FileUtama = () => {
                 )}
             </div>
 
-
+            <Dialog open={isDialogOpen} onOpenChange={setDialogOpen}>
+                <DialogContent className="sm:max-w-[512px]">
+                    <div className='flex justify-end'>
+                        <DialogClose asChild>
+                            <Button type="button" variant="ghost" className='p-0 h-[20px]'>
+                                <X className='h-[16px] w-[16px]' />
+                            </Button>
+                        </DialogClose>
+                    </div>
+                    <DialogHeader>
+                        <DialogTitle className='text-[18px] font-semibold'>Apakah anda yakin untuk menghapus file?</DialogTitle>
+                        <DialogDescription className='text-[14px] text-[#71717A]'>
+                            File yang terhapus tidak dapat dipulihkan kembali. Pastikan untuk mengecek ulang sebelum menghapus file.
+                        </DialogDescription>
+                    </DialogHeader>
+                    <DialogFooter className='mt-[16px]'>
+                        <DialogClose asChild>
+                            <Button variant="outline" className='text-[14px] font-medium h-[40px]'>
+                                Batal
+                            </Button>
+                        </DialogClose>
+                        <Button onClick={handleDelete} className='bg-[#EF4343] text-[14px] hover:bg-[#EF4343] h-[40px]'>
+                            Hapus
+                        </Button>
+                    </DialogFooter>
+                </DialogContent>
+            </Dialog>
         </div>
     )
 }
