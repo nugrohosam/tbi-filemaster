@@ -40,9 +40,9 @@ exports.createDetailProjectUtama = async (req, res) => {
         if (req.body.pekerjaan === 'F3') {
             allowedOtherFiles = ['Form F3.pdf', 'Form F3.docx'];
             if (req.body.other_file === 'Form F3.pdf') {
-                customFileName = 'Form F3 PDF';
+                customFileName = 'Form F3.pdf';
             } else if (req.body.other_file === 'Form F3.docx') {
-                customFileName = 'Form F3 DOCX';
+                customFileName = 'Form F3.docx';
             }
         } 
         // Handle F4: Define allowed other files and set custom name
@@ -128,13 +128,19 @@ exports.getDetailProjectUtamaById = async (req, res) => {
 
 exports.updateDetailProjectUtama = async (req, res) => {
     try {
-        const { id_project } = req.params;
-        const { pekerjaan, other_file } = req.body;  // Ambil pekerjaan dan other_file dari req.body
-        
-        // Cari entri berdasarkan id_project dan pekerjaan
+        const { id } = req.params; // Mengambil id dari parameter URL
+        const { pekerjaan } = req.query; // Mengambil pekerjaan dari query
+        const other_file = req.query.other_file || req.body.other_file; // Mengecek other_file di query atau body
+
+        // Validasi id_project
+        if (!id) {
+            return res.status(400).json({ error: 'id is required in the URL' });
+        }
+
+        // Cari entri berdasarkan id dan pekerjaan
         const detailProjectUtama = await DetailProjectUtama.findOne({
             where: {
-                id_project: id_project,
+                id_project: id,
                 pekerjaan: pekerjaan,
             },
         });
@@ -143,99 +149,127 @@ exports.updateDetailProjectUtama = async (req, res) => {
             return res.status(404).json({ error: 'DetailProjectUtama not found' });
         }
 
-        // Jika pekerjaan adalah F1 atau F2, set other_file menjadi null
-        if (pekerjaan === 'F1' || pekerjaan === 'F2') {
-            req.body.other_file = null;  // Mengatur other_file menjadi null untuk F1 dan F2
-        }
+        // Definisikan nama file khusus berdasarkan pekerjaan
+        let customFileName = null;
+        const allowedOtherFiles = [];
 
-        // Untuk pekerjaan F1 dan F2, izinkan file untuk diupdate, asalkan file baru dikirim
-        if ((pekerjaan === 'F1' || pekerjaan === 'F2') && req.file) {
-            // Jika ada file baru, perbarui file
-            const filePath = formatFilePath(req.file);
-            const updatedDetailProjectUtama = await detailProjectUtama.update({
-                file: filePath, // Perbarui file dengan file baru
-            });
-            return res.status(200).json({
-                id_project_utama: updatedDetailProjectUtama.id_project_utama,
-                id_project: updatedDetailProjectUtama.id_project,
-                file: updatedDetailProjectUtama.file,
-                other_file: req.body.other_file || updatedDetailProjectUtama.other_file, // Jika other_file dikirimkan, pakai yang baru, jika tidak gunakan null
-                pekerjaan: updatedDetailProjectUtama.pekerjaan,
-                createdAt: updatedDetailProjectUtama.createdAt,
-                updatedAt: updatedDetailProjectUtama.updatedAt,
-                deletedAt: updatedDetailProjectUtama.deletedAt,
-            });
-        }
-
-        // Jika pekerjaan adalah F2 dan tidak ada file yang dikirimkan, kita tidak perlu update file
-        if (pekerjaan === 'F2' && !req.file && !other_file) {
-            return res.status(400).json({ error: 'No valid file uploaded for F2' });
-        }
-
-        // Validasi untuk pekerjaan F3 dan F4
-        if (pekerjaan === 'F3') {
-            // Untuk pekerjaan F3, pastikan other_file tidak null dan hanya bisa memilih Form F3.pdf atau Form F3.docx
-            const validF3Files = ['Form F3.pdf', 'Form F3.docx'];
-            if (!other_file || !validF3Files.includes(other_file)) {
-                return res.status(400).json({ error: 'Invalid or missing other_file for pekerjaan F3. Only "Form F3.pdf" or "Form F3.docx" allowed.' });
+        if (pekerjaan === 'F1') {
+            customFileName = 'Form Pendaftaran.pdf';
+        } else if (pekerjaan === 'F2') {
+            customFileName = 'Informasi Pekerjaan.pdf';
+        } else if (pekerjaan === 'F3') {
+            allowedOtherFiles.push('Form F3.pdf', 'Form F3.docx');
+            if (other_file === 'Form F3.pdf') {
+                customFileName = 'Form F3.pdf';
+            } else if (other_file === 'Form F3.docx') {
+                customFileName = 'Form F3.docx';
             }
         } else if (pekerjaan === 'F4') {
-            // Untuk pekerjaan F4, pastikan other_file tidak null dan hanya bisa memilih file-file tertentu
-            const validF4Files = [
+            allowedOtherFiles.push(
                 'Gambar.pdf', 'Analisa Struktur.pdf', 'Spek Teknis.pdf',
                 'Perhitungan Air Hujan.pdf', 'Perhitungan Air Bersih.pdf',
                 'Perhitungan Air Kotor.pdf', 'Kajian dan Simak (SLF).pdf'
-            ];
-            if (!other_file || !validF4Files.includes(other_file)) {
-                return res.status(400).json({ error: 'Invalid or missing other_file for pekerjaan F4. Please provide one of the allowed files.' });
+            );
+            if (allowedOtherFiles.includes(other_file)) {
+                customFileName = other_file;
             }
         }
 
-        // Tentukan nama file yang disesuaikan untuk F3 dan F4
-        let customFileName = null;
-
-        if (pekerjaan === 'F3') {
-            customFileName = other_file;
-        } else if (pekerjaan === 'F4') {
-            customFileName = other_file;
+        // Validasi other_file jika pekerjaan adalah F3 atau F4
+        if (allowedOtherFiles.length > 0 && !allowedOtherFiles.includes(other_file)) {
+            return res.status(400).json({ error: `Invalid other_file for pekerjaan ${pekerjaan}` });
         }
 
-        // Jika tidak ada file atau file baru, biarkan file lama tetap ada
-        const filePath = req.file ? formatFilePath(req.file) : detailProjectUtama.file;
+        // Jika pekerjaan adalah F1 atau F2, set other_file menjadi null
+        if (pekerjaan === 'F1' || pekerjaan === 'F2') {
+            req.body.other_file = null;
+        }
 
-        // Perbarui data detail project utama
-        const updatedDetailProjectUtama = await detailProjectUtama.update({
-            file: customFileName || filePath, // Gunakan nama file kustom jika ada
-        });
+        // Update file jika ada file yang diunggah
+        if (req.file) {
+            customFileName = customFileName || req.file.originalname;
+            await detailProjectUtama.update({
+                file: customFileName,
+                other_file: req.body.other_file,
+            });
+        } else {
+            // Jika tidak ada file baru, tetap perbarui other_file
+            await detailProjectUtama.update({
+                other_file: req.body.other_file,
+            });
+        }
 
         res.status(200).json({
-            id_project_utama: updatedDetailProjectUtama.id_project_utama,
-            id_project: updatedDetailProjectUtama.id_project,
-            file: updatedDetailProjectUtama.file,
-            other_file: req.body.other_file || updatedDetailProjectUtama.other_file, // Gunakan other_file jika ada
-            pekerjaan: updatedDetailProjectUtama.pekerjaan,
-            createdAt: updatedDetailProjectUtama.createdAt,
-            updatedAt: updatedDetailProjectUtama.updatedAt,
-            deletedAt: updatedDetailProjectUtama.deletedAt,
+            id_project_utama: detailProjectUtama.id_project_utama,
+            id_project: detailProjectUtama.id_project,
+            file: detailProjectUtama.file,
+            other_file: detailProjectUtama.other_file,
+            pekerjaan: detailProjectUtama.pekerjaan,
+            createdAt: detailProjectUtama.createdAt,
+            updatedAt: detailProjectUtama.updatedAt,
+            deletedAt: detailProjectUtama.deletedAt,
         });
     } catch (error) {
         res.status(400).json({ error: error.message });
     }
 };
 
-
-// Delete DetailProjectUtama by ID
 exports.deleteDetailProjectUtama = async (req, res) => {
-  try {
-    const deleted = await DetailProjectUtama.destroy({
-      where: { id_project_utama: req.params.id },
-    });
-    if (deleted) {
-      res.status(204).send();
-    } else {
-      res.status(404).json({ error: 'DetailProjectUtama not found' });
+    const { id, pekerjaan } = req.params;
+    const { other_file } = req.query;
+  
+    try {
+      // Validasi untuk F1 dan F2, jika memilih 'other_file', maka otomatis null
+      if (pekerjaan === 'F1' || pekerjaan === 'F2') {
+        if (other_file) {
+          return res.status(400).json({ error: 'For F1 and F2, other_file must be null.' });
+        }
+  
+        // Hapus entri berdasarkan id_project dan pekerjaan F1/F2
+        const deleted = await DetailProjectUtama.destroy({
+          where: { 
+            id_project_utama: id,
+            pekerjaan: pekerjaan
+          }
+        });
+  
+        if (deleted) {
+          return res.status(204).send();
+        } else {
+          return res.status(404).json({ error: 'DetailProjectUtama not found for F1 or F2' });
+        }
+  
+      }
+  
+      // Validasi untuk F3 dan F4, memastikan 'other_file' tidak null dan sesuai file yang ditentukan
+      if (pekerjaan === 'F3' || pekerjaan === 'F4') {
+        const validFiles = ['Form F3.pdf', 'Form F3.docx', 'Gambar.pdf', 'Analisa Struktur.pdf', 'Spek Teknis.pdf', 'Perhitungan Air Hujan.pdf', 'Perhitungan Air Bersih.pdf', 'Perhitungan Air Kotor.pdf', 'Kajian dan Simak (SLF).pdf'];
+        
+        if (!other_file || !validFiles.includes(other_file)) {
+          return res.status(400).json({ error: 'For F3 and F4, other_file must be a valid file (e.g., Form F3.pdf, Form F3.docx, etc.).' });
+        }
+  
+        // Hapus entri berdasarkan id_project, pekerjaan, dan other_file
+        const deleted = await DetailProjectUtama.destroy({
+          where: {
+            id_project_utama: id,
+            pekerjaan: pekerjaan,
+            other_file: other_file
+          }
+        });
+  
+        if (deleted) {
+          return res.status(204).send();
+        } else {
+          return res.status(404).json({ error: 'DetailProjectUtama not found for F3 or F4 with the provided other_file' });
+        }
+      }
+  
+      // Jika pekerjaan tidak dikenali (selain F1, F2, F3, atau F4)
+      return res.status(400).json({ error: 'Invalid pekerjaan type. Must be F1, F2, F3, or F4.' });
+  
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'An error occurred while deleting the detail project utama.' });
     }
-  } catch (error) {
-    res.status(400).json({ error: error.message });
-  }
-};
+  };
