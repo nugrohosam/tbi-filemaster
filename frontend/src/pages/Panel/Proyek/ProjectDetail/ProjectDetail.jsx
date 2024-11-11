@@ -21,6 +21,8 @@ const ProjectDetail = () => {
   const [uploadedFileF4SLF, setUploadedFileF4SLF] = useState(null);
   const isFileUploadedF3 = uploadedFileF3pdf || uploadedFileF3docx;
   const isFileUploadedF4 = uploadedFileF4gambar || uploadedFileF4analisa || uploadedFileF4spek || uploadedFileF4airhujan || uploadedFileF4airbersih || uploadedFileF4airkotor || uploadedFileF4SLF;
+  const lengF = [uploadedFile, uploadedFileF2, isFileUploadedF3, isFileUploadedF4].filter(file => file !== null && file !== undefined).length;
+
   return (
 
     <ScrollArea className="h-[92vh] w-full bg-white">
@@ -39,6 +41,7 @@ const ProjectDetail = () => {
             uploadedFileF2={uploadedFileF2}
             uploadedFileF3={isFileUploadedF3}
             uploadedFileF4={isFileUploadedF4}
+            lengF={lengF}
             />
           </div>
           <div className={`${

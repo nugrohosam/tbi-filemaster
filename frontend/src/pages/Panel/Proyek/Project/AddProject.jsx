@@ -23,7 +23,7 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select"
-
+import { Progress } from "@/components/ui/progress"
 import { ScrollArea } from '@/components/ui/scroll-area';
 
 
@@ -72,13 +72,15 @@ const AddProject = () => {
         setSelectedRegency(regency);
         setSubDistricts(indonesiaData[selectedProvince][regency] || []);
     };
+
+    const [progress, setProgress] = useState(50);
     return (
         <Dialog>
             <DialogTrigger asChild>
                 <Button onClick={() => { setCurrentStep(0); setContentStep(0); }} className='bg-[#0036AA] gap-2 h-[36px] font-medium hover:bg-[#315197]'><Add size={20} /> <p className='text-[14px] font-medium'>Tambahkan Proyek</p></Button>
             </DialogTrigger>
             {ContentStep === 0 && (
-                <DialogContent className="sm:max-w-[820px] ">
+                <DialogContent className={`sm:max-w-[820px] ${isMobile && ('h-full')}`}>
                     {!isMobile && (
                         <>
                             <div className='flex justify-end'>
@@ -94,7 +96,7 @@ const AddProject = () => {
                         </>
                     )}
 
-                    <div className='grid gsp-[16px]'>
+                    <div className={`grid gsp-[16px] ${isMobile && ('pb-[14px]')}`}>
                         {!isMobile && (
                             <>
                                 <div className='flex flex-wrap -m-4 pt-[16px] pb-[32px]'>
@@ -107,6 +109,26 @@ const AddProject = () => {
                                 </div>
 
                                 <div className='w-full border' />
+                            </>
+                        )}
+                        {isMobile && (
+                            <>
+                                <div className='py-[16px]'>
+                                    <p className='text-[12px] font-medium text-[#717179]'>Step {currentStep === 1 ? '2' : '1'}</p>
+                                    <div className='flex justify-between'>
+                                        <h1 className='text-[14px] font-semibold'>Detail Informasi Proyek</h1>
+                                        <p className='text-[12px] font-medium text-[#717179]'>{currentStep === 1 ? '2' : '1'}/2</p>
+                                    </div>
+                                    <div className="w-full h-[2px] mt-[10px] bg-gray-300 rounded">
+                                        <div
+                                            className="h-full bg-blue-500 rounded"
+                                            style={{ width: `${progress}%` }}
+                                        ></div>
+                                    </div>
+
+
+                                </div>
+
                             </>
                         )}
                         {currentStep === 0 && (
@@ -318,6 +340,27 @@ const AddProject = () => {
                                 </div>
                             </>
                         )}
+
+                        {isMobile && (
+                            <>
+                                {currentStep === 0 && (
+                                    <div className='fixed flex justify-between bottom-0 py-[10px] w-[89%] bg-white'>
+                                        <DialogClose asChild>
+                                            <Button onClick={() => setProgress(50)} variant='secondary' className='text-[16px] font-bold h-[48px] w-[168.5px]' >Batal</Button>
+                                        </DialogClose>
+                                        <Button onClick={() => { setCurrentStep(1); setProgress(100) }} className='text-[16px] font-bold h-[48px] w-[168.5px]' style={{ background: 'linear-gradient(90deg, #0241C1, #175DEC)' }} >Lanjutkan</Button>
+                                    </div>
+                                )}
+                                {currentStep === 1 && (
+                                    <div className='fixed flex justify-between bottom-0 py-[10px] w-[89%] bg-white'>
+                                        <DialogClose asChild>
+                                            <Button onClick={() => setProgress(50)} variant='secondary' className='text-[16px] font-bold h-[48px] w-[168.5px]' >Batal</Button>
+                                        </DialogClose>
+                                        <Button onClick={() => { setContentStep(1); setProgress(50); }} className='text-[16px] font-bold h-[48px] w-[168.5px]' style={{ background: 'linear-gradient(90deg, #0241C1, #175DEC)' }} >Lanjutkan</Button>
+                                    </div>
+                                )}
+                            </>
+                        )}
                     </div>
 
                     {!isMobile && (
@@ -335,30 +378,7 @@ const AddProject = () => {
                             )}
                         </>
                     )}
-                    {isMobile && (
-                        <div className='fixed bottom-0 w-full bg-white'>
-                            {currentStep === 0 && (
-                                <DialogFooter className='bg-white w-full flex justify-between'>
-                                    <Button onClick={() => setContentStep(1)} variant="secondary" type="submit" className='h-[40px] text-[14px]'>
-                                        Lewati
-                                    </Button>
-                                    <Button onClick={() => setCurrentStep(1)} className='bg-[#0036AA] h-[40px] text-[14px] hover:bg-[#2b4a8e]'>
-                                        Simpan
-                                    </Button>
-                                </DialogFooter>
-                            )}
-                            {currentStep === 1 && (
-                                <DialogFooter className='bg-white w-full'>
-                                    <Button onClick={() => setContentStep(1)} variant="secondary" type="submit" className='h-[40px] text-[14px]'>
-                                        Lewati
-                                    </Button>
-                                    <Button onClick={() => setContentStep(1)} type="submit" className='bg-[#0036AA] h-[40px] text-[14px] hover:bg-[#2b4a8e]'>
-                                        Simpan
-                                    </Button>
-                                </DialogFooter>
-                            )}
-                        </div>
-                    )}
+
 
 
                 </DialogContent>

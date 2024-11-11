@@ -6,11 +6,11 @@ import {
     AccordionTrigger,
 } from "@/components/ui/accordion"
 import { Button } from '@/components/ui/button'
-import { Export, DocumentForward, Trash, DocumentText } from 'iconsax-react';
+import { Export, DocumentForward, Trash, DocumentText, DocumentUpload } from 'iconsax-react';
 import Pdf from '../../../../assets/pdf.png'
 import Docx from '../../../../assets/docx.png'
-const Form = ({uploadedFile, setUploadedFile, uploadedFileF2, setUploadedFileF2, uploadedFileF3pdf, setUploadedFileF3pdf,uploadedFileF3docx, setUploadedFileF3docx,uploadedFileF4gambar, setUploadedFileF4gambar, uploadedFileF4analisa, setUploadedFileF4analisa,uploadedFileF4spek, setUploadedFileF4spek, uploadedFileF4airhujan, setUploadedFileF4airhujan, uploadedFileF4airbersih, setUploadedFileF4airbersih, uploadedFileF4airkotor, setUploadedFileF4airkotor, uploadedFileF4SLF, setUploadedFileF4SLF}) => {
-    
+const Form = ({ uploadedFile, setUploadedFile, uploadedFileF2, setUploadedFileF2, uploadedFileF3pdf, setUploadedFileF3pdf, uploadedFileF3docx, setUploadedFileF3docx, uploadedFileF4gambar, setUploadedFileF4gambar, uploadedFileF4analisa, setUploadedFileF4analisa, uploadedFileF4spek, setUploadedFileF4spek, uploadedFileF4airhujan, setUploadedFileF4airhujan, uploadedFileF4airbersih, setUploadedFileF4airbersih, uploadedFileF4airkotor, setUploadedFileF4airkotor, uploadedFileF4SLF, setUploadedFileF4SLF }) => {
+
 
     const handleFileChange = (event) => {
         const file = event.target.files[0];
@@ -294,74 +294,74 @@ const Form = ({uploadedFile, setUploadedFile, uploadedFileF2, setUploadedFileF2,
 
     const handleFileClick = () => {
         if (uploadedFile) {
-          const fileURL = URL.createObjectURL(uploadedFile);
-          window.open(fileURL, '_blank');
+            const fileURL = URL.createObjectURL(uploadedFile);
+            window.open(fileURL, '_blank');
         }
-      };
+    };
     const handleFileClickF2 = () => {
         if (uploadedFileF2) {
-          const fileURL = URL.createObjectURL(uploadedFileF2);
-          window.open(fileURL, '_blank');
+            const fileURL = URL.createObjectURL(uploadedFileF2);
+            window.open(fileURL, '_blank');
         }
-      };
+    };
     const handleFileClickF3pdf = () => {
         if (uploadedFileF3pdf) {
-          const fileURL = URL.createObjectURL(uploadedFileF3pdf);
-          window.open(fileURL, '_blank');
+            const fileURL = URL.createObjectURL(uploadedFileF3pdf);
+            window.open(fileURL, '_blank');
         }
-      };
+    };
     const handleFileClickF3docx = () => {
         if (uploadedFileF3docx) {
-          const fileURL = URL.createObjectURL(uploadedFileF3docx);
-          window.open(fileURL, '_blank');
+            const fileURL = URL.createObjectURL(uploadedFileF3docx);
+            window.open(fileURL, '_blank');
         }
-      };
+    };
     const handleFileClickF4gambar = () => {
         if (uploadedFileF4gambar) {
-          const fileURL = URL.createObjectURL(uploadedFileF4gambar);
-          window.open(fileURL, '_blank');
+            const fileURL = URL.createObjectURL(uploadedFileF4gambar);
+            window.open(fileURL, '_blank');
         }
-      };
+    };
     const handleFileClickF4analisa = () => {
         if (uploadedFileF4analisa) {
-          const fileURL = URL.createObjectURL(uploadedFileF4analisa);
-          window.open(fileURL, '_blank');
+            const fileURL = URL.createObjectURL(uploadedFileF4analisa);
+            window.open(fileURL, '_blank');
         }
-      };
+    };
     const handleFileClickF4spek = () => {
         if (uploadedFileF4spek) {
-          const fileURL = URL.createObjectURL(uploadedFileF4spek);
-          window.open(fileURL, '_blank');
+            const fileURL = URL.createObjectURL(uploadedFileF4spek);
+            window.open(fileURL, '_blank');
         }
-      };
+    };
     const handleFileClickF4airhujan = () => {
         if (uploadedFileF4airhujan) {
-          const fileURL = URL.createObjectURL(uploadedFileF4airhujan);
-          window.open(fileURL, '_blank');
+            const fileURL = URL.createObjectURL(uploadedFileF4airhujan);
+            window.open(fileURL, '_blank');
         }
-      };
+    };
     const handleFileClickF4airbersih = () => {
         if (uploadedFileF4airbersih) {
-          const fileURL = URL.createObjectURL(uploadedFileF4airbersih);
-          window.open(fileURL, '_blank');
+            const fileURL = URL.createObjectURL(uploadedFileF4airbersih);
+            window.open(fileURL, '_blank');
         }
-      };
+    };
     const handleFileClickF4airkotor = () => {
         if (uploadedFileF4airkotor) {
-          const fileURL = URL.createObjectURL(uploadedFileF4airkotor);
-          window.open(fileURL, '_blank');
+            const fileURL = URL.createObjectURL(uploadedFileF4airkotor);
+            window.open(fileURL, '_blank');
         }
-      };
+    };
     const handleFileClickF4SLF = () => {
         if (uploadedFileF4SLF) {
-          const fileURL = URL.createObjectURL(uploadedFileF4SLF);
-          window.open(fileURL, '_blank');
+            const fileURL = URL.createObjectURL(uploadedFileF4SLF);
+            window.open(fileURL, '_blank');
         }
-      };
+    };
 
     return (
         <div>
-            <Accordion type="single" defaultValue="item-1 item-2 item-3 item-4" collapsible className="w-full">
+            <Accordion type="multiple" className="w-full">
                 <AccordionItem value="item-1">
                     <AccordionTrigger className='text-[14px] font-semibold p-[16px]'>F1 - Form Pendaftaran</AccordionTrigger>
                     <AccordionContent className='px-[16px] pb-[16px] grid gap-[8px]'>
@@ -394,7 +394,7 @@ const Form = ({uploadedFile, setUploadedFile, uploadedFileF2, setUploadedFileF2,
                                 </div>
                                 <div className='flex gap-[12px]'>
                                     <Button onClick={handleUploadClick} variant="outline" className='h-[36px] px-[12px]'>
-                                        <DocumentForward size={16} color='#0036AA' />
+                                        <DocumentUpload size={16} color='#257DF9' variant="Bulk" />
                                     </Button>
                                     <Button
                                         variant="outline"
@@ -444,7 +444,7 @@ const Form = ({uploadedFile, setUploadedFile, uploadedFileF2, setUploadedFileF2,
                                 </div>
                                 <div className='flex gap-[12px]'>
                                     <Button onClick={handleUploadClickF2} variant="outline" className='h-[36px] px-[12px]'>
-                                        <DocumentForward size={16} color='#0036AA' />
+                                        <DocumentUpload size={16} color='#257DF9' variant="Bulk" />
                                     </Button>
                                     <Button
                                         variant="outline"
@@ -487,7 +487,7 @@ const Form = ({uploadedFile, setUploadedFile, uploadedFileF2, setUploadedFileF2,
                                 </div>
                                 <div className='flex gap-[12px]'>
                                     <Button onClick={handleUploadClickF3pdf} variant="outline" className='h-[36px] px-[12px]'>
-                                        <DocumentForward size={16} color='#0036AA' />
+                                        <DocumentUpload size={16} color='#257DF9' variant="Bulk" />
                                     </Button>
                                     <Button
                                         variant="outline"
@@ -521,7 +521,7 @@ const Form = ({uploadedFile, setUploadedFile, uploadedFileF2, setUploadedFileF2,
                                 </div>
                                 <div className='flex gap-[12px]'>
                                     <Button onClick={handleUploadClickF3docx} variant="outline" className='h-[36px] px-[12px]'>
-                                        <DocumentForward size={16} color='#0036AA' />
+                                        <DocumentUpload size={16} color='#257DF9' variant="Bulk" />
                                     </Button>
                                     <Button
                                         variant="outline"
@@ -585,7 +585,7 @@ const Form = ({uploadedFile, setUploadedFile, uploadedFileF2, setUploadedFileF2,
                                 </div>
                                 <div className='flex gap-[12px]'>
                                     <Button onClick={handleUploadClickF4gambar} variant="outline" className='h-[36px] px-[12px]'>
-                                        <DocumentForward size={16} color='#0036AA' />
+                                        <DocumentUpload size={16} color='#257DF9' variant="Bulk" />
                                     </Button>
                                     <Button
                                         variant="outline"
@@ -626,13 +626,13 @@ const Form = ({uploadedFile, setUploadedFile, uploadedFileF2, setUploadedFileF2,
                                 <div onClick={handleFileClickF4analisa} className='flex gap-[12px] cursor-pointer'>
                                     <img src={Pdf} alt="pdf" className='w-[36px] h-[36px]' />
                                     <div className='text-left grid gap-[4px]'>
-                                    <h4 className='text-[12px] font-bold'>{uploadedFileF4analisa.name.length > 20 ? `${uploadedFileF4analisa.name.slice(0, 20)}...` : uploadedFileF4analisa.name}</h4>
+                                        <h4 className='text-[12px] font-bold'>{uploadedFileF4analisa.name.length > 20 ? `${uploadedFileF4analisa.name.slice(0, 20)}...` : uploadedFileF4analisa.name}</h4>
                                         <p className='text-[12px] text-[#717179]'>{(uploadedFileF4analisa.size / (1024 * 1024)).toFixed(2)} MB</p>
                                     </div>
                                 </div>
                                 <div className='flex gap-[12px]'>
                                     <Button onClick={handleUploadClickF4analisa} variant="outline" className='h-[36px] px-[12px]'>
-                                        <DocumentForward size={16} color='#0036AA' />
+                                        <DocumentUpload size={16} color='#257DF9' variant="Bulk" />
                                     </Button>
                                     <Button
                                         variant="outline"
@@ -673,13 +673,13 @@ const Form = ({uploadedFile, setUploadedFile, uploadedFileF2, setUploadedFileF2,
                                 <div onClick={handleFileClickF4spek} className='flex gap-[12px] cursor-pointer'>
                                     <img src={Pdf} alt="pdf" className='w-[36px] h-[36px]' />
                                     <div className='text-left grid gap-[4px]'>
-                                    <h4 className='text-[12px] font-bold'>{uploadedFileF4spek.name.length > 20 ? `${uploadedFileF4spek.name.slice(0, 20)}...` : uploadedFileF4spek.name}</h4>
+                                        <h4 className='text-[12px] font-bold'>{uploadedFileF4spek.name.length > 20 ? `${uploadedFileF4spek.name.slice(0, 20)}...` : uploadedFileF4spek.name}</h4>
                                         <p className='text-[12px] text-[#717179]'>{(uploadedFileF4spek.size / (1024 * 1024)).toFixed(2)} MB</p>
                                     </div>
                                 </div>
                                 <div className='flex gap-[12px]'>
                                     <Button onClick={handleUploadClickF4spek} variant="outline" className='h-[36px] px-[12px]'>
-                                        <DocumentForward size={16} color='#0036AA' />
+                                        <DocumentUpload size={16} color='#257DF9' variant="Bulk" />
                                     </Button>
                                     <Button
                                         variant="outline"
@@ -720,13 +720,13 @@ const Form = ({uploadedFile, setUploadedFile, uploadedFileF2, setUploadedFileF2,
                                 <div onClick={handleFileClickF4airhujan} className='flex gap-[12px] cursor-pointer'>
                                     <img src={Pdf} alt="pdf" className='w-[36px] h-[36px]' />
                                     <div className='text-left grid gap-[4px]'>
-                                    <h4 className='text-[12px] font-bold'>{uploadedFileF4airhujan.name.length > 20 ? `${uploadedFileF4airhujan.name.slice(0, 20)}...` : uploadedFileF4airhujan.name}</h4>
+                                        <h4 className='text-[12px] font-bold'>{uploadedFileF4airhujan.name.length > 20 ? `${uploadedFileF4airhujan.name.slice(0, 20)}...` : uploadedFileF4airhujan.name}</h4>
                                         <p className='text-[12px] text-[#717179]'>{(uploadedFileF4airhujan.size / (1024 * 1024)).toFixed(2)} MB</p>
                                     </div>
                                 </div>
                                 <div className='flex gap-[12px]'>
                                     <Button onClick={handleUploadClickF4airhujan} variant="outline" className='h-[36px] px-[12px]'>
-                                        <DocumentForward size={16} color='#0036AA' />
+                                        <DocumentUpload size={16} color='#257DF9' variant="Bulk" />
                                     </Button>
                                     <Button
                                         variant="outline"
@@ -767,13 +767,13 @@ const Form = ({uploadedFile, setUploadedFile, uploadedFileF2, setUploadedFileF2,
                                 <div onClick={handleFileClickF4airbersih} className='flex gap-[12px] cursor-pointer'>
                                     <img src={Pdf} alt="pdf" className='w-[36px] h-[36px]' />
                                     <div className='text-left grid gap-[4px]'>
-                                    <h4 className='text-[12px] font-bold'>{uploadedFileF4airbersih.name.length > 20 ? `${uploadedFileF4airbersih.name.slice(0, 20)}...` : uploadedFileF4airbersih.name}</h4>
+                                        <h4 className='text-[12px] font-bold'>{uploadedFileF4airbersih.name.length > 20 ? `${uploadedFileF4airbersih.name.slice(0, 20)}...` : uploadedFileF4airbersih.name}</h4>
                                         <p className='text-[12px] text-[#717179]'>{(uploadedFileF4airbersih.size / (1024 * 1024)).toFixed(2)} MB</p>
                                     </div>
                                 </div>
                                 <div className='flex gap-[12px]'>
                                     <Button onClick={handleUploadClickF4airbersih} variant="outline" className='h-[36px] px-[12px]'>
-                                        <DocumentForward size={16} color='#0036AA' />
+                                        <DocumentUpload size={16} color='#257DF9' variant="Bulk" />
                                     </Button>
                                     <Button
                                         variant="outline"
@@ -814,13 +814,13 @@ const Form = ({uploadedFile, setUploadedFile, uploadedFileF2, setUploadedFileF2,
                                 <div onClick={handleFileClickF4airkotor} className='flex gap-[12px] cursor-pointer'>
                                     <img src={Pdf} alt="pdf" className='w-[36px] h-[36px]' />
                                     <div className='text-left grid gap-[4px]'>
-                                    <h4 className='text-[12px] font-bold'>{uploadedFileF4airkotor.name.length > 20 ? `${uploadedFileF4airkotor.name.slice(0, 20)}...` : uploadedFileF4airkotor.name}</h4>
+                                        <h4 className='text-[12px] font-bold'>{uploadedFileF4airkotor.name.length > 20 ? `${uploadedFileF4airkotor.name.slice(0, 20)}...` : uploadedFileF4airkotor.name}</h4>
                                         <p className='text-[12px] text-[#717179]'>{(uploadedFileF4airkotor.size / (1024 * 1024)).toFixed(2)} MB</p>
                                     </div>
                                 </div>
                                 <div className='flex gap-[12px]'>
                                     <Button onClick={handleUploadClickF4airkotor} variant="outline" className='h-[36px] px-[12px]'>
-                                        <DocumentForward size={16} color='#0036AA' />
+                                        <DocumentUpload size={16} color='#257DF9' variant="Bulk" />
                                     </Button>
                                     <Button
                                         variant="outline"
@@ -861,13 +861,13 @@ const Form = ({uploadedFile, setUploadedFile, uploadedFileF2, setUploadedFileF2,
                                 <div onClick={handleFileClickF4SLF} className='flex gap-[12px] cursor-pointer'>
                                     <img src={Pdf} alt="pdf" className='w-[36px] h-[36px]' />
                                     <div className='text-left grid gap-[4px]'>
-                                    <h4 className='text-[12px] font-bold'>{uploadedFileF4SLF.name.length > 20 ? `${uploadedFileF4SLF.name.slice(0, 20)}...` : uploadedFileF4SLF.name}</h4>
+                                        <h4 className='text-[12px] font-bold'>{uploadedFileF4SLF.name.length > 20 ? `${uploadedFileF4SLF.name.slice(0, 20)}...` : uploadedFileF4SLF.name}</h4>
                                         <p className='text-[12px] text-[#717179]'>{(uploadedFileF4SLF.size / (1024 * 1024)).toFixed(2)} MB</p>
                                     </div>
                                 </div>
                                 <div className='flex gap-[12px]'>
                                     <Button onClick={handleUploadClickF4SLF} variant="outline" className='h-[36px] px-[12px]'>
-                                        <DocumentForward size={16} color='#0036AA' />
+                                        <DocumentUpload size={16} color='#257DF9' variant="Bulk" />
                                     </Button>
                                     <Button
                                         variant="outline"

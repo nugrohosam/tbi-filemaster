@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { ArrowLeft, InfoCircle, TickCircle } from 'iconsax-react';
@@ -8,8 +8,20 @@ import FilePendukung from './FilePendukung';
 import File from '../../../../assets/file.png'
 import InformasiProyek from './InformasiProyek';
 
-const TableData = ({uploadedFile, uploadedFileF2, uploadedFileF3, uploadedFileF4,}) => {
+const TableData = ({uploadedFile, uploadedFileF2, uploadedFileF3, uploadedFileF4, lengF}) => {
     const [activeTab, setActiveTab] = useState("Direktori");
+    const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth < 768);
+        };
+
+        window.addEventListener("resize", handleResize);
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        };
+    }, []);
 
 
     return (
@@ -34,15 +46,15 @@ const TableData = ({uploadedFile, uploadedFileF2, uploadedFileF3, uploadedFileF4
                             <p className='text-[12px] font-medium'>Progress pekerjaan</p>
                             <InfoCircle size="14" />
                         </div>
-                        <p className='text-[12px] font-medium'>1 dari 4</p>
+                        <p className='text-[12px] font-medium'>{lengF} dari 4</p>
                     </div>
                     <div className="container mx-auto">
                         <div className="flex flex-wrap -m-4">
-                            <div className="w-full md:w-1/2 lg:w-1/4 p-4">
+                            <div className="w-1/4 md:w-1/2 lg:w-1/4  p-4">
                                 <div className="pb-1 text-[12px]  font-semibold grid gap-2">
                                     <div  className={`h-[5px] w-full rounded-full ${uploadedFile? "bg-[#0036AA]" : "bg-[#CBD5E1]"}`} />
                                     <div className={`flex gap-2 items-center ${uploadedFile? "text-[#0036AA]" : "text-[#717179]"}`}>
-                                        F1 - Form Pendaftaran
+                                        F1 {isMobile ? '' : '-  Form Pendaftaran'}
                                         {uploadedFile && (
                                         <TickCircle variant="Bold" size="16" />
                                         )}
@@ -50,11 +62,11 @@ const TableData = ({uploadedFile, uploadedFileF2, uploadedFileF3, uploadedFileF4
                                 </div>
                             </div>
 
-                            <div className="w-full md:w-1/2 lg:w-1/4 p-4">
+                            <div className="w-1/4 md:w-1/2 lg:w-1/4 p-4">
                                 <div className="pb-1 text-[12px]  font-semibold grid gap-2">
                                 <div  className={`h-[5px] w-full rounded-full ${uploadedFileF2? "bg-[#0036AA]" : "bg-[#CBD5E1]"}`} />
                                 <div className={`flex gap-2 items-center ${uploadedFileF2? "text-[#0036AA]" : "text-[#717179]"}`}>
-                                        F2 - Informasi Pekerjaan
+                                        F2 {isMobile ? '':'- Informasi Pekerjaan'}
                                         {uploadedFileF2 && (
                                         <TickCircle variant="Bold" size="16" />
                                         )}
@@ -62,11 +74,11 @@ const TableData = ({uploadedFile, uploadedFileF2, uploadedFileF3, uploadedFileF4
                                 </div>
                             </div>
 
-                            <div className="w-full md:w-1/2 lg:w-1/4 p-4">
+                            <div className="w-1/4 md:w-1/2 lg:w-1/4 p-4">
                                 <div className="pb-1 text-[12px]  font-semibold grid gap-2">
                                 <div  className={`h-[5px] w-full rounded-full ${uploadedFileF3? "bg-[#0036AA]" : "bg-[#CBD5E1]"}`} />
                                 <div className={`flex gap-2 items-center ${uploadedFileF3? "text-[#0036AA]" : "text-[#717179]"}`}>
-                                        F3 - Data Pengujian
+                                        F3 {isMobile ? '':'- Data Pengujian'}
                                         {uploadedFileF3 && (
                                         <TickCircle variant="Bold" size="16" />
                                         )}
@@ -74,11 +86,11 @@ const TableData = ({uploadedFile, uploadedFileF2, uploadedFileF3, uploadedFileF4
                                 </div>
                             </div>
 
-                            <div className="w-full md:w-1/2 lg:w-1/4 p-4">
+                            <div className="w-1/4 md:w-1/2 lg:w-1/4 p-4">
                                 <div className="pb-1 text-[12px]  font-semibold grid gap-2">
                                 <div  className={`h-[5px] w-full rounded-full ${uploadedFileF4? "bg-[#0036AA]" : "bg-[#CBD5E1]"}`} />
                                 <div className={`flex gap-2 items-center ${uploadedFileF4? "text-[#0036AA]" : "text-[#717179]"}`}>
-                                        F4 - Data Pekerjaan Teknis
+                                        F4 {isMobile ? '':'- Data Pekerjaan Teknis'}
                                         {uploadedFileF4 && (
                                         <TickCircle variant="Bold" size="16" />
                                         )}

@@ -38,7 +38,7 @@ const FilePendukung = () => {
     };
 
     const handleUploadClick = () => {
-        document.getElementById("f1").click();
+        document.getElementById("pendukung").click();
     };
 
     const handleView = (file) => {
@@ -77,7 +77,7 @@ const FilePendukung = () => {
                     <Add size={20} /> <p className='text-[14px] font-medium'>Tambahkan File</p>
                 </Button>
                 <input
-                    id="f1"
+                    id="pendukung"
                     type="file"
                     accept=".pdf, .docx"
                     multiple
