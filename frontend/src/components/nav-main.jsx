@@ -40,7 +40,7 @@ export function NavMain({
             className="group/collapsible ">
             
               <CollapsibleTrigger asChild>
-                <SidebarMenuButton tooltip={item.title}  className={`px-[24px] py-[6px] gap-[8px] h-[40px] text-[14px] font-semibold ${activeItem === item.title ? "bg-white" : ""}`} onClick={() => handleItemClick(item)}  >
+                <SidebarMenuButton tooltip={item.title}  className={`px-[24px] py-[6px] gap-[8px] h-[40px] text-[14px] font-semibold ${activeItem === item.title ? "" : ""}`} onClick={() => handleItemClick(item)}  >
                   {item.icon && <item.icon size={16} />}
                   <span>{item.title}</span>
                 </SidebarMenuButton>

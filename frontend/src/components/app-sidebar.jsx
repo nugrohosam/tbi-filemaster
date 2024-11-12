@@ -53,7 +53,7 @@ const items = [
 const items1 = [
   {
       title: "Manajemen Pengguna",
-      url: "/panel/dashboard",
+      url: "/panel/user-management",
       icon: UserOctagon,
   },
   

@@ -6,6 +6,7 @@ import ProjectDetail from '../Proyek/ProjectDetail/ProjectDetail';
 import Project from '../Proyek/Project/Project';
 import { Toaster } from "@/components/ui/toaster"
 import { SelectedIdProvider } from '../Proyek/Project/SelectIdProject';
+import UserManagement from '../UserManagement/UserManagement';
 
 const MainPanel = () => {
     return (
@@ -17,6 +18,7 @@ const MainPanel = () => {
                 
                 <Route path="proyek" element={<SelectedIdProvider><Project /></SelectedIdProvider>} />
                 <Route path="proyek/detail" element={<SelectedIdProvider><ProjectDetail /></SelectedIdProvider>} />
+                <Route path="user-management" element={<SelectedIdProvider><UserManagement /></SelectedIdProvider>} />
                 
             </Routes>
         </Layout>
