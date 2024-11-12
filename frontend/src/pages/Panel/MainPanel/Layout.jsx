@@ -3,6 +3,7 @@ import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from '@/components/app-sidebar';
 import { Notification, HambergerMenu } from 'iconsax-react';
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import Logout from './Logout';
 
 export const VisibilityContext = createContext();
 
@@ -34,10 +35,7 @@ export default function Layout({ children }) {
             )}
             <div className='flex gap-3 items-center'>
               <Notification size={24} />
-              <Avatar>
-                <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-                <AvatarFallback>CN</AvatarFallback>
-              </Avatar>
+             <Logout/>
             </div>
           </div>
           {children}
