@@ -5,8 +5,9 @@ import { ArrowLeft, InfoCircle, TickCircle } from 'iconsax-react';
 import { Button } from '@/components/ui/button';
 import FileUtama from './FileUtama';
 import FilePendukung from './FilePendukung';
-import File from '../../../../assets/file.png'
+
 import InformasiProyek from './InformasiProyek';
+import LogActivity from './LogActivity';
 
 const TableData = ({uploadedFile, uploadedFileF2, uploadedFileF3, uploadedFileF4, lengF}) => {
     const [activeTab, setActiveTab] = useState("Direktori");
@@ -138,11 +139,8 @@ const TableData = ({uploadedFile, uploadedFileF2, uploadedFileF3, uploadedFileF4
                            <FileUtama/>
                         )}
                         {activeTab === " Log" && (
-                           <div className='flex flex-col justify-center items-center py-[24px] text-center'>
-                           <img src={File} alt="file" className='w-[40px] h-[40px]' />
-                           <h3 className='text-[16px] font-semibold'>File tidak tersedia</h3>
-                           <p className='text-[14px] text-[#717179]'>Upload file yang diperlukan menampilkan file</p>
-                       </div>
+                            <LogActivity/>
+                   
                         )}
                     </div>
                 </div>
