@@ -25,7 +25,11 @@ const swaggerOptions = {
             },
         },
         tags: [
+            { name: 'Auth' },
+            { name: 'User' },
             { name: 'Projects' },
+            { name: 'DetailProjectUtama' },
+            { name: 'DetailProjectPendukung' },
             // Add more tags here as needed
         ],
         security: [{ BearerAuth: [] }],
