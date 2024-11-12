@@ -17,6 +17,8 @@ import { ScrollArea } from "@/components/ui/scroll-area"
 import { Badge } from "@/components/ui/badge"
 import ViewProfile from './ViewProfile';
 import EditProfile from './EditProfile';
+import File from '../../../assets/file.png'
+import AddUser from './AddUser';
 
 
 const TableData = () => {
@@ -26,36 +28,36 @@ const TableData = () => {
         { id: "3", name: 'Kasir' },
     ];
     const [data, setdata] = useState([
-        { id: 1, nama: 'jackson.graham@example.com', role: 'Admin', status: 'Aktif', date: '23 Oktober 2024', foto:'https://via.placeholder.com/40' },
-        { id: 2, nama: 'sophia.lee@example.com', role: 'Manager', status: 'Tidak Aktif', date: '12 Oktober 2024', foto:'https://github.com/shadcn.png' },
-        { id: 3, nama: 'liam.smith@example.com', role: 'Kasir', status: 'Aktif', date: '15 Oktober 2024', foto:'https://via.placeholder.com/40' },
-        { id: 4, nama: 'emma.johnson@example.com', role: 'Admin', status: 'Aktif', date: '20 Oktober 2024', foto:'https://github.com/shadcn.png' },
-        { id: 5, nama: 'oliver.williams@example.com', role: 'Manager', status: 'Aktif', date: '5 Oktober 2024', foto:'https://via.placeholder.com/40' },
-        { id: 6, nama: 'ava.brown@example.com', role: 'Kasir', status: 'Tidak Aktif', date: '3 Oktober 2024', foto:'https://github.com/shadcn.png' },
-        { id: 7, nama: 'noah.jones@example.com', role: 'Admin', status: 'Tidak Aktif', date: '9 Oktober 2024', foto:'https://via.placeholder.com/40' },
-        { id: 8, nama: 'mia.miller@example.com', role: 'Manager', status: 'Aktif', date: '17 Oktober 2024', foto:'https://github.com/shadcn.png' },
-        { id: 9, nama: 'lucas.davis@example.com', role: 'Kasir', status: 'Aktif', date: '22 Oktober 2024', foto:'https://via.placeholder.com/40' },
-        { id: 10, nama: 'amelia.garcia@example.com', role: 'Admin', status: 'Tidak Aktif', date: '13 Oktober 2024', foto:'https://github.com/shadcn.png' },
-        { id: 11, nama: 'benjamin.martinez@example.com', role: 'Manager', status: 'Aktif', date: '6 Oktober 2024', foto:'https://via.placeholder.com/40' },
-        { id: 12, nama: 'charlotte.rodriguez@example.com', role: 'Kasir', status: 'Aktif', date: '19 Oktober 2024', foto:'https://github.com/shadcn.png' },
-        { id: 13, nama: 'elijah.lopez@example.com', role: 'Admin', status: 'Tidak Aktif', date: '21 Oktober 2024', foto:'https://via.placeholder.com/40' },
-        { id: 14, nama: 'harper.harris@example.com', role: 'Manager', status: 'Aktif', date: '8 Oktober 2024', foto:'https://github.com/shadcn.png' },
-        { id: 15, nama: 'william.clark@example.com', role: 'Kasir', status: 'Aktif', date: '14 Oktober 2024', foto:'https://via.placeholder.com/40' },
-        { id: 16, nama: 'evelyn.robinson@example.com', role: 'Admin', status: 'Tidak Aktif', date: '16 Oktober 2024', foto:'https://github.com/shadcn.png' },
-        { id: 17, nama: 'james.thomas@example.com', role: 'Manager', status: 'Aktif', date: '7 Oktober 2024', foto:'https://via.placeholder.com/40' },
-        { id: 18, nama: 'ella.moore@example.com', role: 'Kasir', status: 'Aktif', date: '24 Oktober 2024', foto:'https://github.com/shadcn.png' },
-        { id: 19, nama: 'henry.jackson@example.com', role: 'Admin', status: 'Tidak Aktif', date: '18 Oktober 2024', foto:'https://via.placeholder.com/40' },
-        { id: 20, nama: 'scarlett.white@example.com', role: 'Manager', status: 'Aktif', date: '4 Oktober 2024', foto:'https://github.com/shadcn.png' },
-        { id: 21, nama: 'leo.walker@example.com', role: 'Kasir', status: 'Aktif', date: '2 Oktober 2024', foto:'https://via.placeholder.com/40' },
-        { id: 22, nama: 'grace.young@example.com', role: 'Admin', status: 'Aktif', date: '26 Oktober 2024', foto:'https://github.com/shadcn.png' },
-        { id: 23, nama: 'matthew.allen@example.com', role: 'Manager', status: 'Tidak Aktif', date: '28 Oktober 2024', foto:'https://via.placeholder.com/40' },
-        { id: 24, nama: 'chloe.king@example.com', role: 'Kasir', status: 'Aktif', date: '27 Oktober 2024', foto:'https://github.com/shadcn.png' },
-        { id: 25, nama: 'jack.hill@example.com', role: 'Admin', status: 'Aktif', date: '25 Oktober 2024', foto:'https://via.placeholder.com/40' },
-        { id: 26, nama: 'lucy.scott@example.com', role: 'Manager', status: 'Aktif', date: '29 Oktober 2024', foto:'https://github.com/shadcn.png' },
-        { id: 27, nama: 'daniel.adams@example.com', role: 'Kasir', status: 'Tidak Aktif', date: '11 Oktober 2024', foto:'https://via.placeholder.com/40' },
-        { id: 28, nama: 'sofia.mitchell@example.com', role: 'Admin', status: 'Aktif', date: '10 Oktober 2024', foto:'https://github.com/shadcn.png' },
-        { id: 29, nama: 'ryan.carter@example.com', role: 'Manager', status: 'Tidak Aktif', date: '1 Oktober 2024', foto:'https://via.placeholder.com/40' },
-        { id: 30, nama: 'hannah.taylor@example.com', role: 'Kasir', status: 'Aktif', date: '30 Oktober 2024', foto:'https://github.com/shadcn.png' },
+        { id: 1, nama: 'jackson.graham@example.com', role: 'Admin', status: 'Aktif', date: '23 Oktober 2024', foto: 'https://via.placeholder.com/40' },
+        { id: 2, nama: 'sophia.lee@example.com', role: 'Manager', status: 'Tidak Aktif', date: '12 Oktober 2024', foto: 'https://github.com/shadcn.png' },
+        { id: 3, nama: 'liam.smith@example.com', role: 'Kasir', status: 'Aktif', date: '15 Oktober 2024', foto: 'https://via.placeholder.com/40' },
+        { id: 4, nama: 'emma.johnson@example.com', role: 'Admin', status: 'Aktif', date: '20 Oktober 2024', foto: 'https://github.com/shadcn.png' },
+        { id: 5, nama: 'oliver.williams@example.com', role: 'Manager', status: 'Aktif', date: '5 Oktober 2024', foto: 'https://via.placeholder.com/40' },
+        { id: 6, nama: 'ava.brown@example.com', role: 'Kasir', status: 'Tidak Aktif', date: '3 Oktober 2024', foto: 'https://github.com/shadcn.png' },
+        { id: 7, nama: 'noah.jones@example.com', role: 'Admin', status: 'Tidak Aktif', date: '9 Oktober 2024', foto: 'https://via.placeholder.com/40' },
+        { id: 8, nama: 'mia.miller@example.com', role: 'Manager', status: 'Aktif', date: '17 Oktober 2024', foto: 'https://github.com/shadcn.png' },
+        { id: 9, nama: 'lucas.davis@example.com', role: 'Kasir', status: 'Aktif', date: '22 Oktober 2024', foto: 'https://via.placeholder.com/40' },
+        { id: 10, nama: 'amelia.garcia@example.com', role: 'Admin', status: 'Tidak Aktif', date: '13 Oktober 2024', foto: 'https://github.com/shadcn.png' },
+        { id: 11, nama: 'benjamin.martinez@example.com', role: 'Manager', status: 'Aktif', date: '6 Oktober 2024', foto: 'https://via.placeholder.com/40' },
+        { id: 12, nama: 'charlotte.rodriguez@example.com', role: 'Kasir', status: 'Aktif', date: '19 Oktober 2024', foto: 'https://github.com/shadcn.png' },
+        { id: 13, nama: 'elijah.lopez@example.com', role: 'Admin', status: 'Tidak Aktif', date: '21 Oktober 2024', foto: 'https://via.placeholder.com/40' },
+        { id: 14, nama: 'harper.harris@example.com', role: 'Manager', status: 'Aktif', date: '8 Oktober 2024', foto: 'https://github.com/shadcn.png' },
+        { id: 15, nama: 'william.clark@example.com', role: 'Kasir', status: 'Aktif', date: '14 Oktober 2024', foto: 'https://via.placeholder.com/40' },
+        { id: 16, nama: 'evelyn.robinson@example.com', role: 'Admin', status: 'Tidak Aktif', date: '16 Oktober 2024', foto: 'https://github.com/shadcn.png' },
+        { id: 17, nama: 'james.thomas@example.com', role: 'Manager', status: 'Aktif', date: '7 Oktober 2024', foto: 'https://via.placeholder.com/40' },
+        { id: 18, nama: 'ella.moore@example.com', role: 'Kasir', status: 'Aktif', date: '24 Oktober 2024', foto: 'https://github.com/shadcn.png' },
+        { id: 19, nama: 'henry.jackson@example.com', role: 'Admin', status: 'Tidak Aktif', date: '18 Oktober 2024', foto: 'https://via.placeholder.com/40' },
+        { id: 20, nama: 'scarlett.white@example.com', role: 'Manager', status: 'Aktif', date: '4 Oktober 2024', foto: 'https://github.com/shadcn.png' },
+        { id: 21, nama: 'leo.walker@example.com', role: 'Kasir', status: 'Aktif', date: '2 Oktober 2024', foto: 'https://via.placeholder.com/40' },
+        { id: 22, nama: 'grace.young@example.com', role: 'Admin', status: 'Aktif', date: '26 Oktober 2024', foto: 'https://github.com/shadcn.png' },
+        { id: 23, nama: 'matthew.allen@example.com', role: 'Manager', status: 'Tidak Aktif', date: '28 Oktober 2024', foto: 'https://via.placeholder.com/40' },
+        { id: 24, nama: 'chloe.king@example.com', role: 'Kasir', status: 'Aktif', date: '27 Oktober 2024', foto: 'https://github.com/shadcn.png' },
+        { id: 25, nama: 'jack.hill@example.com', role: 'Admin', status: 'Aktif', date: '25 Oktober 2024', foto: 'https://via.placeholder.com/40' },
+        { id: 26, nama: 'lucy.scott@example.com', role: 'Manager', status: 'Aktif', date: '29 Oktober 2024', foto: 'https://github.com/shadcn.png' },
+        { id: 27, nama: 'daniel.adams@example.com', role: 'Kasir', status: 'Tidak Aktif', date: '11 Oktober 2024', foto: 'https://via.placeholder.com/40' },
+        { id: 28, nama: 'sofia.mitchell@example.com', role: 'Admin', status: 'Aktif', date: '10 Oktober 2024', foto: 'https://github.com/shadcn.png' },
+        { id: 29, nama: 'ryan.carter@example.com', role: 'Manager', status: 'Tidak Aktif', date: '1 Oktober 2024', foto: 'https://via.placeholder.com/40' },
+        { id: 30, nama: 'hannah.taylor@example.com', role: 'Kasir', status: 'Aktif', date: '30 Oktober 2024', foto: 'https://github.com/shadcn.png' },
     ]);
 
     const [searchTerm, setSearchTerm] = useState('');
@@ -138,18 +140,18 @@ const TableData = () => {
     };
 
     const handleDelete = (id) => {
-       
-        const updatedData = data.filter(item => item.id !== id);
-        setdata(updatedData); 
-      };
 
-      const handleViewProfile = (product) => {
-        setSelectedProduct(product);  
-        setIsOpen(true); 
+        const updatedData = data.filter(item => item.id !== id);
+        setdata(updatedData);
     };
-      const handleEditProfile = (product) => {
-        setSelectedProductEdit(product);  
-        setIsOpenEdit(true); 
+
+    const handleViewProfile = (product) => {
+        setSelectedProduct(product);
+        setIsOpen(true);
+    };
+    const handleEditProfile = (product) => {
+        setSelectedProductEdit(product);
+        setIsOpenEdit(true);
     };
 
 
@@ -190,124 +192,156 @@ const TableData = () => {
             </div>
             <ScrollArea className='rounded-[16px]'>
                 <div className=" mx-auto">
-                    <div className="flex flex-col">
-                        <div className="overflow-x-auto shadow-md sm:rounded-lg">
-                            <div className="inline-block min-w-full align-middle">
-                                <div className="overflow-hidden">
-                                    <table className="min-w-full divide-y rounded-[16px] divide-gray-200 text-[14px] table-fixed dark:divide-gray-700">
-                                        <thead className="bg-white rounded-[16px]">
-                                            <tr>
-                                                <th scope="col" className="p-4">
-                                                    <div className="flex items-center">
-                                                        <Checkbox
-                                                            checked={isAllChecked}
-                                                            onCheckedChange={handleCheckAll}
-                                                        />
-                                                        <label htmlFor="checkbox-all" className="sr-only">
-                                                            checkbox
-                                                        </label>
-                                                    </div>
-                                                </th>
-                                                <th scope="col" className="py-3 px-6  font-medium tracking-wider text-left text-[#71717A]  dark:text-gray-400">
-                                                    Nama
-                                                </th>
-                                                <th scope="col" className="py-3 px-6  font-medium tracking-wider text-left text-[#71717A]  dark:text-gray-400">
-                                                    Role
-                                                </th>
-                                                <th scope="col" className="py-3 px-6  font-medium tracking-wider text-center text-[#71717A]  dark:text-gray-400">
-                                                    Status
-                                                </th>
-                                                <th scope="col" className="py-3 px-6  font-medium tracking-wider text-right text-[#71717A]  dark:text-gray-400">
-                                                    Taggal dibuat
-                                                </th>
-                                                <th scope="col" className="p-4">
-                                                    <span className="sr-only">Edit</span>
-                                                </th>
-                                            </tr>
-                                        </thead>
-                                        <tbody className="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
-                                            {paginatedData.map((product) => (
-                                                <tr key={product.id} className="hover:bg-gray-100 dark:hover:bg-gray-700">
-                                                    <td className="p-4 w-4">
+                    {paginatedData.length > 0 ? (
+                        <div className="flex flex-col">
+                            <div className="overflow-x-auto shadow-md sm:rounded-lg">
+                                <div className="inline-block min-w-full align-middle">
+
+                                    <div className="overflow-hidden">
+                                        <table className="min-w-full divide-y rounded-[16px] divide-gray-200 text-[14px] table-fixed dark:divide-gray-700">
+                                            <thead className="bg-white rounded-[16px]">
+                                                <tr>
+                                                    <th scope="col" className="p-4">
                                                         <div className="flex items-center">
                                                             <Checkbox
-                                                                checked={!!checkedItems[product.id]}
-                                                                onCheckedChange={() => handleItemCheck(product.id)}
+                                                                checked={isAllChecked}
+                                                                onCheckedChange={handleCheckAll}
                                                             />
-                                                            <label htmlFor={`checkbox-table-${product.id}`} className="sr-only">
+                                                            <label htmlFor="checkbox-all" className="sr-only">
                                                                 checkbox
                                                             </label>
                                                         </div>
-                                                    </td>
-                                                    <td className="py-4 px-6  font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                        {product.nama}
-                                                    </td>
-                                                    <td className="py-4 px-6  font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                        {product.role}
-                                                    </td>
-                                                    <td className="py-4 px-6 flex justify-center  font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                        <Badge className='text-[12px] font-semibold rounded-full' variant={product.status === 'Aktif' ? 'secondary' : 'destructive'} >{product.status}</Badge>
-                                                    </td>
-                                                    <td className="py-4 px-6 text-right  font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                        {product.date}
-                                                    </td>
-
-                                                    <td className="py-4 px-6  font-medium text-right whitespace-nowrap">
-                                                        <DropdownMenu>
-                                                            <DropdownMenuTrigger asChild>
-                                                                <Button variant="ghost" className="h-8 w-8 p-0 focus-visible:ring-0 focus-visible:ring-offset-0">
-                                                                    <span className="sr-only">Open menu</span>
-                                                                    <MoreVertical className="h-[20px] w-[20px]" />
-                                                                </Button>
-                                                            </DropdownMenuTrigger>
-                                                            <DropdownMenuContent align="end" className="w-[150px]">
-                                                                <DropdownMenuItem onClick={() => handleViewProfile(product)}  className="p-3 gap-3 text-[14px] font-medium ">
-                                                                 View Profile
-                                                                </DropdownMenuItem>
-                                                                <DropdownMenuItem onClick={() => handleEditProfile(product)} className="p-3 gap-3 text-[14px] font-medium ">
-                                                                 Edit Profile
-                                                                </DropdownMenuItem>
-                                                                <DropdownMenuItem  onClick={() => toggleStatus(product.id)} className="p-3 gap-3 text-[14px] font-medium ">
-                                                                {product.status === 'Aktif' ? 'Deactive' : 'Inactive'}
-                                                                </DropdownMenuItem>
-                                                                <DropdownMenuItem  onClick={() => handleDelete(product.id)} className="p-3 gap-3 text-[14px] font-medium text-rose-500 focus:text-rose-500">
-                                                                    Delete
-                                                                </DropdownMenuItem>
-                                                            </DropdownMenuContent>
-                                                        </DropdownMenu>
-                                                    </td>
+                                                    </th>
+                                                    <th scope="col" className="py-3 px-6  font-medium tracking-wider text-left text-[#71717A]  dark:text-gray-400">
+                                                        Nama
+                                                    </th>
+                                                    <th scope="col" className="py-3 px-6  font-medium tracking-wider text-left text-[#71717A]  dark:text-gray-400">
+                                                        Role
+                                                    </th>
+                                                    <th scope="col" className="py-3 px-6  font-medium tracking-wider text-center text-[#71717A]  dark:text-gray-400">
+                                                        Status
+                                                    </th>
+                                                    <th scope="col" className="py-3 px-6  font-medium tracking-wider text-right text-[#71717A]  dark:text-gray-400">
+                                                        Taggal dibuat
+                                                    </th>
+                                                    <th scope="col" className="p-4">
+                                                        <span className="sr-only">Edit</span>
+                                                    </th>
                                                 </tr>
-                                            ))}
-                                        </tbody>
-                                    </table>
-                                    <div className="flex items-center justify-end space-x-2 py-4">
-                                        <div className="flex-1 text-[14px] text-slate-500">
-                                            {startItem}-{endItem} of{" "}
-                                            {data.length} row(s) selected.
-                                        </div>
-                                        <div className="space-x-2">
-                                            <Button onClick={handlePrevPage} variant='ghost' disabled={currentPage === 1} className='bg-white text-[14px]'>Previous</Button>
-                                            {pageNumbers.map((number) => (
-                                                <Button
-                                                    key={number}
-                                                    onClick={() => handlePageChange(number)}
-                                                    variant={currentPage === number ? "ghost" : "secondary"}
-                                                    className={currentPage === number ? "text-[14px]" : "bg-white text-[14px]"}
-                                                >
-                                                    {number}
-                                                </Button>
-                                            ))}
-                                            <Button onClick={handleNextPage} variant='ghost' className='bg-white text-[14px]' disabled={currentPage === totalPages}>Next</Button>
+                                            </thead>
+                                            <tbody className="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
+                                                {paginatedData.map((product) => (
+                                                    <tr key={product.id} className="hover:bg-gray-100 dark:hover:bg-gray-700">
+                                                        <td className="p-4 w-4">
+                                                            <div className="flex items-center">
+                                                                <Checkbox
+                                                                    checked={!!checkedItems[product.id]}
+                                                                    onCheckedChange={() => handleItemCheck(product.id)}
+                                                                />
+                                                                <label htmlFor={`checkbox-table-${product.id}`} className="sr-only">
+                                                                    checkbox
+                                                                </label>
+                                                            </div>
+                                                        </td>
+                                                        <td className="py-4 px-6  font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                            {product.nama}
+                                                        </td>
+                                                        <td className="py-4 px-6  font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                            {product.role}
+                                                        </td>
+                                                        <td className="py-4 px-6 flex justify-center  font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                            <Badge className='text-[12px] font-semibold rounded-full' variant={product.status === 'Aktif' ? 'secondary' : 'destructive'} >{product.status}</Badge>
+                                                        </td>
+                                                        <td className="py-4 px-6 text-right  font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                            {product.date}
+                                                        </td>
+
+                                                        <td className="py-4 px-6  font-medium text-right whitespace-nowrap">
+                                                            <DropdownMenu>
+                                                                <DropdownMenuTrigger asChild>
+                                                                    <Button variant="ghost" className="h-8 w-8 p-0 focus-visible:ring-0 focus-visible:ring-offset-0">
+                                                                        <span className="sr-only">Open menu</span>
+                                                                        <MoreVertical className="h-[20px] w-[20px]" />
+                                                                    </Button>
+                                                                </DropdownMenuTrigger>
+                                                                <DropdownMenuContent align="end" className="w-[150px]">
+                                                                    <DropdownMenuItem onClick={() => handleViewProfile(product)} className="p-3 gap-3 text-[14px] font-medium ">
+                                                                        View Profile
+                                                                    </DropdownMenuItem>
+                                                                    <DropdownMenuItem onClick={() => handleEditProfile(product)} className="p-3 gap-3 text-[14px] font-medium ">
+                                                                        Edit Profile
+                                                                    </DropdownMenuItem>
+                                                                    <DropdownMenuItem onClick={() => toggleStatus(product.id)} className="p-3 gap-3 text-[14px] font-medium ">
+                                                                        {product.status === 'Aktif' ? 'Deactive' : 'Inactive'}
+                                                                    </DropdownMenuItem>
+                                                                    <DropdownMenuItem onClick={() => handleDelete(product.id)} className="p-3 gap-3 text-[14px] font-medium text-rose-500 focus:text-rose-500">
+                                                                        Delete
+                                                                    </DropdownMenuItem>
+                                                                </DropdownMenuContent>
+                                                            </DropdownMenu>
+                                                        </td>
+                                                    </tr>
+                                                ))}
+                                            </tbody>
+                                        </table>
+                                        <div className="flex items-center justify-end space-x-2 py-4">
+                                            <div className="flex-1 text-[14px] text-slate-500">
+                                                {startItem}-{endItem} of{" "}
+                                                {data.length} row(s) selected.
+                                            </div>
+                                            <div className="space-x-2">
+                                                <Button onClick={handlePrevPage} variant='ghost' disabled={currentPage === 1} className='bg-white text-[14px]'>Previous</Button>
+                                                {pageNumbers.map((number) => (
+                                                    <Button
+                                                        key={number}
+                                                        onClick={() => handlePageChange(number)}
+                                                        variant={currentPage === number ? "ghost" : "secondary"}
+                                                        className={currentPage === number ? "text-[14px]" : "bg-white text-[14px]"}
+                                                    >
+                                                        {number}
+                                                    </Button>
+                                                ))}
+                                                <Button onClick={handleNextPage} variant='ghost' className='bg-white text-[14px]' disabled={currentPage === totalPages}>Next</Button>
+                                            </div>
                                         </div>
                                     </div>
+
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    ) : (
+                        <div className='flex flex-col gap-[24px] h-[336px] justify-center items-center py-[24px] text-center'>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="31" height="40" viewBox="0 0 31 40" fill="none">
+                                <path d="M29.9998 7.95719V36C29.9998 38.2091 28.209 40 25.9998 40H4C1.79086 40 0 38.2091 0 36V4C0 1.79086 1.79086 0 4 0H21.3367L29.9998 7.95719Z" fill="white" />
+                                <g filter="url(#filter0_d_370_2338)">
+                                    <path d="M29.9998 7.95719H22.3367C21.7844 7.95719 21.3367 7.50947 21.3367 6.95719V0L29.9998 7.95719Z" fill="white" />
+                                </g>
+                                <defs>
+                                    <filter id="filter0_d_370_2338" x="18.3367" y="-1" width="12.6631" height="11.957" filterUnits="userSpaceOnUse">
+                                        <feFlood floodOpacity="0" result="BackgroundImageFix" />
+                                        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                                        <feOffset dx="-1" dy="1" />
+                                        <feGaussianBlur stdDeviation="1" />
+                                        <feComposite in2="hardAlpha" operator="out" />
+                                        <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0" />
+                                        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_370_2338" />
+                                        <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_370_2338" result="shape" />
+                                    </filter>
+                                </defs>
+                            </svg>
+
+                            <div>
+                                <h3 className='text-[16px] font-semibold'>Data pengguna kosong</h3>
+                                <p className='text-[14px] text-[#717179]'>Tidak ada data pengguna dihalaman ini</p>
+                            </div>
+
+                            <AddUser className='w-[286px]' />
+                        </div>
+                    )}
                 </div>
             </ScrollArea>
-            {selectedProduct && <ViewProfile isOpen={isOpen} setIsOpen={setIsOpen} selectedProduct={selectedProduct}/> }
-            {selectedProductEdit && <EditProfile isOpen={isOpenEdit} setIsOpen={setIsOpenEdit} selectedProductEdit={selectedProductEdit}/>}
+            {selectedProduct && <ViewProfile isOpen={isOpen} setIsOpen={setIsOpen} selectedProduct={selectedProduct} />}
+            {selectedProductEdit && <EditProfile isOpen={isOpenEdit} setIsOpen={setIsOpenEdit} selectedProductEdit={selectedProductEdit} />}
         </div>
     )
 }

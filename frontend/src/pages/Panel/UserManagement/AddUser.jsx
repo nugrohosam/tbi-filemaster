@@ -27,7 +27,7 @@ import {
 import { useToast } from '@/hooks/use-toast'
 import { ToastAction } from "@/components/ui/toast"
 
-const AddUser = () => {
+const AddUser = ({className, buttonProps,}) => {
     const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
     useEffect(() => {
@@ -162,7 +162,7 @@ const AddUser = () => {
     return (
         <Dialog open={isOpen} onOpenChange={setIsOpen}>
             <DialogTrigger asChild>
-                <Button className='bg-[#0036AA] hover:bg-[#0036AA] h-[36px] text-[14px] font-medium'> <Add size="18" /> Tambahkan Pengguna</Button>
+                <Button className={`bg-[#0036AA] hover:bg-[#0036AA] h-[36px] text-[14px] font-medium ${className}`} {...buttonProps}> <Add size="18" /> Tambahkan Pengguna</Button>
             </DialogTrigger>
             <DialogContent className={`sm:max-w-[505px] ${isMobile && ('h-full')}`}>
                 {!isMobile && (

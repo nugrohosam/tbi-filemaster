@@ -39,7 +39,7 @@ const indonesiaData = {
 };
 
 
-const AddProject = () => {
+const AddProject = ({className}) => {
     const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
     const [isFolderVisible, setIsFolderVisible] = useState(false);
 
@@ -77,7 +77,7 @@ const AddProject = () => {
     return (
         <Dialog>
             <DialogTrigger asChild>
-                <Button onClick={() => { setCurrentStep(0); setContentStep(0); }} className='bg-[#0036AA] gap-2 h-[36px] font-medium hover:bg-[#315197]'><Add size={20} /> <p className='text-[14px] font-medium'>Tambahkan Proyek</p></Button>
+                <Button onClick={() => { setCurrentStep(0); setContentStep(0); }} className={`bg-[#0036AA] gap-2 h-[36px] font-medium hover:bg-[#315197] ${className}`}><Add size={20} /> <p className='text-[14px] font-medium'>Tambahkan Proyek</p></Button>
             </DialogTrigger>
             {ContentStep === 0 && (
                 <DialogContent className={`sm:max-w-[820px] ${isMobile && ('h-full')}`}>
