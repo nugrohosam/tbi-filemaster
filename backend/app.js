@@ -4,6 +4,7 @@ const dotenv = require("dotenv");
 const sequelize = require("./config/database");
 const projectRoutes = require("./routes/ProjectRoute");
 const DetailProjectUtamaRoutes = require('./routes/DetailProjectUtamaRoute');
+const DetailProjectPendukungRoutes = require('./routes/DetailProjectPendukungRoute');
 const swaggerDocs = require("./swagger");
 
 dotenv.config();
@@ -31,6 +32,7 @@ app.use('/uploads', express.static('uploads'));
 // Routes
 app.use("/api/projects", projectRoutes);
 app.use('/api/detail-project-utama', DetailProjectUtamaRoutes);
+app.use('/api/detail-project-pendukung', DetailProjectPendukungRoutes);
 
 // Swagger Documentation
 swaggerDocs(app);
